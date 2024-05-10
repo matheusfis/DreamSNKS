@@ -144,31 +144,30 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    background-image: url(../Assets/tiffany-nike-air-force-1-DZ1382-001-release-date.png);
+    background-color: #bd7b62;
     background-size: cover;
-
 }
 
 
 .imagem-tenis {
     flex: 1;
-    height: 100vh;
-    width: 100%;
+    height: 100%;
+    width: 20%;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 50px;
+    padding: 0 20px;
 }
 
 .imagem-tenis img {
-    width: 500px;
-    height: 500px;
-    border-radius: 25px;
+    width: 850px;
+    /* height: 500px; */
+    /* border-radius: 25px; */
 }
 
 
 .sobreDream aside {
-    flex: 3;
+    flex: 1;
     height: 100%;
     padding: 0 50px;
     display: flex;
@@ -184,6 +183,19 @@ body {
 
 .sobreDream aside p {
     font-family: 'Poppins';
+    text-align: justify;
+}
+
+/* -----------------------LANÇAMENTOS----------------------- */
+
+.lancamentos-dream{
+    height: 100vh;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #FAD1D1;
 }
 
 
