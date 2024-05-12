@@ -115,9 +115,9 @@ body {
 .texto_centro .conheca {
     font-family: "Rubik Bubbles", system-ui;
     color: whitesmoke;
-    -webkit-text-stroke: 1.5px #3E7CFA;
+    -webkit-text-stroke: 1.4px #3E7CFA;
     text-stroke: 2px #FFF;
-    font-size: 40px;
+    font-size: 54px;
     text-align: center;
 }
 
@@ -232,7 +232,6 @@ body {
     padding: 0 20px;
     position: relative;
     perspective: 800px;
-
 }
 
 .card-group {
@@ -284,10 +283,106 @@ body {
 }
 
 
+/* -----------------------NOVIDADES----------------------- */
 
+.novidades-dream {
+    height: 100vh;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: linear-gradient(90deg, rgba(190, 145, 145, 0.8), rgba(7, 82, 117, 0.6));
+}
 
+.novidades-dream aside {
+    flex: 1;
+    height: 100%;
+    padding: 0 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
+.novidades-dream aside h2 {
+    font-size: 3rem;
+    margin-bottom: 50px;
+    color: rgb(26, 10, 18);
+}
 
+.novidades-dream aside p {
+    font-family: 'Poppins';
+    text-align: justify;
+}
+
+.novidades-dream article {
+    flex: 1;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    position: relative;
+    perspective: 800px;
+}
+
+.card-novidades{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 350px;
+    height: 550px;
+    background-color: #fff;
+    transform-style: preserve-3d;
+    transform: translate(-50%, -50%) perspective(2000px);
+    box-shadow: inset 300px 0 50px rgba(0, 0, 0, 0.5), 0 20px 100px rgba(0, 0, 0, 0.5);
+    transition: 1s;
+}
+
+.card-novidades:hover{
+    transform: translate(-50%, -50%) perspective(2000px) rotate(-8deg);
+    box-shadow: inset 20px 0 50px rgba(0, 0, 0, 0.5), 0 20px 100px rgba(0, 0, 0, 0.5);
+
+}
+
+.card-novidades:before{
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, rgba(11, 45, 77, 0.3), rgba(177, 172, 100, 0.8));
+    transform-origin: bottom;
+    transform: skewX(-45deg);
+}
+
+.card-novidades:after{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -5px;
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(177, 172, 100, 0.8), rgba(11, 45, 77, 0.3));
+    transform-origin: left;
+    transform: skewY(-45deg);
+}
+
+.card-novidades img{
+    width: 100%;
+    max-width: 400px;
+    height: 100%;
+    position: relative;
+    transform-origin: left;
+    transition: 1s;
+}
+
+.card-novidades:hover img{
+    transform: rotateY(-150deg);
+
+}
 
 /* 
 #sobre {
