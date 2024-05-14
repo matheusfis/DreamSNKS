@@ -71,6 +71,12 @@ body {
 
 }
 
+.list-itens a li:hover {
+    color: #3E7CFA;
+    font-size: 21px;
+    transition: all 0.5s;
+
+}
 
 .sobre {
     width: 22px;
