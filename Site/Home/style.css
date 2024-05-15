@@ -68,14 +68,12 @@ body {
     color: white;
     /* -webkit-text-stroke-width: 0.6px;
     -webkit-text-stroke-color: black; */
-
 }
 
 .list-itens a li:hover {
     color: #3E7CFA;
     font-size: 21px;
     transition: all 0.5s;
-
 }
 
 .sobre {
@@ -119,7 +117,6 @@ body {
     flex-direction: column;
     width: 100%;
     height: 100%;
-
 }
 
 .texto_centro .conheca {
@@ -163,7 +160,6 @@ button:hover {
     display: flex;
     flex-direction: row;
     align-items: center;
-
 }
 
 
@@ -177,8 +173,6 @@ button:hover {
     padding: 0 20px;
     position: relative;
     perspective: 800px;
-
-
 }
 
 
@@ -218,8 +212,7 @@ button:hover {
 
 .card-tenis:hover{
     transform: translate(-50%, -50%) perspective(2000px) rotate(-8deg);
-    box-shadow: inset 20px 0 50px rgba(0, 0, 0, 0.5), 0 20px 100px rgba(0, 0, 0, 0.5);
-    
+    box-shadow: inset 20px 0 50px rgba(0, 0, 0, 0.5), 0 20px 100px rgba(0, 0, 0, 0.5); 
 }
 
 .card-tenis:before{
@@ -232,7 +225,6 @@ button:hover {
     background: linear-gradient(90deg, rgba(33, 74, 134, 1), rgba(98, 161, 255, 1));
     transform-origin: bottom;
     transform: skewX(-45deg);
-
 }
 
 .card-tenis:after{
@@ -245,7 +237,6 @@ button:hover {
     background: linear-gradient(90deg, rgba(98, 161, 255, 1), rgba(33, 74, 134, 1));
     transform-origin: left;
     transform: skewY(-45deg);
-
 }
 
 .card-tenis img{
@@ -255,7 +246,6 @@ button:hover {
     position: relative;
     transform-origin: left;
     transition: 1s;
-
 }
 
 .card-tenis:hover img{
@@ -294,6 +284,7 @@ button:hover {
     align-items: center;
     /* background: linear-gradient(90deg, rgba(15, 129, 196, 0.8), rgba(7, 82, 117, 0.6)); */
 }
+
 .favoritos-dream aside {
     flex: 1;
     height: 100%;
@@ -346,7 +337,6 @@ button:hover {
     transition: transform 500ms;
     width: 100%;
     max-width: 100%;
-
 }
 
 .card:not(:first-child) {
@@ -494,7 +484,6 @@ button:hover {
     font-family: "Rubik Bubbles", system-ui;
     color: #132c5f;
     font-size: 22px;
-
 }
 
 input {
