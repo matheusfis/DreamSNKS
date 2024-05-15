@@ -4,11 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Dream SNKS</title>
     <link rel="stylesheet" href="style.css">
-
+    <script src="script.js"></script>
+    <!-- <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+     -->
 
 </head>
+
 
 <body>
 
@@ -22,25 +26,25 @@
 
             <div class="itens">
                 <ul class="list-itens">
-                    <a href="">
-                        <li>Sobre 
+                    <a href="#sobreDream">
+                        <li>Sobre
                             <img class="sobre" src="../Assets/Icon Sobre, pé.png" alt="">
                         </li>
                     </a>
-                    <a href="">
+                    <a href="#favoritosDream">
                         <li>Favoritos
                             <img class="favoritos" src="../Assets/star_icon.png" alt="">
                         </li>
                     </a>
 
-                    <a href="">
-                        <li>Novidades 
+                    <a href="#novidadesDream">
+                        <li>Novidades
                             <img class="novidades" src="../Assets/icon Novidades, news.png" alt="">
                         </li>
                     </a>
 
                     <a href="">
-                        <li>Entrar 
+                        <li>Entrar
                             <img class="entrar" src="../Assets/Icon entrar, login.png" alt="">
                         </li>
                     </a>
@@ -53,8 +57,8 @@
                     CONHEÇA MAIS SOBRE <br> O MUNDO DOS <br> SNEAKERS
                 </div>
 
-                <div class="botao">
-                    <button onclick="">Clique aqui para conhecer</button>
+                <div>
+                    <button onclick="conhecer()">Clique aqui e conheça</button>
                 </div>
 
             </div>
@@ -64,19 +68,20 @@
     </section>
 
     <!-- ---------------------SOBRE--------------------- -->
-    <section class="sobreDream">
+    <section id="sobreDream" class="sobreDream">
 
-        <article>
+        <article data-aos="fade-right">
             <!-- <img src="../Assets/aj1 ts high.png" alt=""> -->
             <div class="card-tenis">
                 <img src="../Assets/LançamentosCards/CardAMMSobre.png" alt="">
                 <div class="texto">
-                    <h2>Lorem</h2>
+                    <h2>Descrição do tênis</h2>
                     <p>
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex dicta exercitationem quaerat
-                        pariatur quisquam id, nemo quidem modi laudantium unde esse nulla vero facere dolore
-                        consequuntur
-                        dignissimos ullam aut quos.
+                        Esse tênis trata a silhueta icônica do Air Jordan 3 com uma renovação premium. Possuindo suede
+                        em Atlanta, couro branco desbotado, camurça cinza suave na gola, no calcanhar e na ponta do pé.
+                        Possuindo o logo 'Ma Maniére' bordados nas línguas do tênis, com um forro acolchoado que se
+                        repete na gola interna. Um tom creme sutil é aplicado ao painel moldado do calcanhar. Detalhes
+                        de cor violeta envolvem o calcanhar, proporcionando um toque de cor contrastante.
                     </p>
                 </div>
             </div>
@@ -86,36 +91,45 @@
         <aside>
             <h2>Sobre</h2>
             <p>
-                Os sneakers, ou tênis casuais, transcenderam seu papel original como calçados puramente funcionais para
-                se tornarem ícones culturais profundamente entrelaçados com moda, conforto e expressão pessoal. Estes
-                calçados, que inicialmente serviam para atividades atléticas, agora são peças centrais na moda urbana e
-                subculturas como o hip-hop e o skate, refletindo não apenas estilos, mas também atitudes e valores de
-                uma geração.
-
-                Para aqueles que são apaixonados por sapatos, os sneakers são uma extensão vital da identidade pessoal,
-                oferecendo uma plataforma para expressar individualidade e preferências estilísticas. Cada par pode
-                revelar muito sobre a personalidade e o status social do usuário, além de manter-se alinhado com as
-                últimas tendências da moda. Além disso, a evolução tecnológica desses calçados garante que conforto e
-                design andem de mãos dadas, proporcionando suporte adequado para o dia-a-dia e para práticas esportivas.
+                Os sneakers ultrapassaram sua utilidade original e se tornaram fundamentais no dia a dia, servindo como
+                uma forma de expressão de estilo e individualidade. Eles não só melhoram a autoestima e o bem-estar
+                físico, mas também elevam a confiança, impactando positivamente no desempenho profissional e pessoal de
+                quem os usa.
             </p>
+
+            <p> <br>
+                Com o tempo, os sneakers adquiriram um papel cultural significativo. De simples calçados para atividades
+                físicas a ícones de culturas esportiva e urbana, modelos como o Dunk SB e a linha Air Jordan são
+                exemplos de como os sneakers podem ser tanto influenciados quanto influenciadores de tendências
+                culturais e esportivas.
+            </p>
+
+            <p> <br>
+                O seu tênis também são um indicativo de personalidade e status social. Ter um modelo raro ou um
+                lançamento recente é comparável ao prestígio de possuir tecnologia de ponta, como um smartphone de
+                última geração. Nosso site celebra essa combinação de moda e funcionalidade, oferecendo sneakers que são
+                verdadeiras declarações de identidade.
+            </p>
+
+
         </aside>
 
     </section>
 
-    <!-- ---------------------LANÇAMENTOS--------------------- -->
-    <section class="favoritos-dream">
+    <!-- ---------------------FAVORITOS--------------------- -->
+    <section id="favoritosDream" class="favoritos-dream">
 
 
         <aside>
             <h2>Favoritos</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui nemo culpa quas sed officia minima vel
-                tempore eos dicta ipsa debitis aliquid unde dignissimos laudantium, velit consequatur suscipit nihil
-                beatae?
-
+            <p>
+                Descubra a seleção de sneakers mais adorados por nôs! Cada par ao lado não é apenas um calçado, mas uma
+                história de inovação, estilo e cultura. Aqui, destacamos modelos que não só definiram tendências, mas
+                também capturaram a essência do street style.
             </p>
         </aside>
 
-        <article>
+        <article data-aos="zoom-out">
 
             <div class="card-group">
 
@@ -146,12 +160,9 @@
 
     <!-- --------------------- NOVIDADES --------------------- -->
 
-    <section class="novidades-dream">
+    <section id="novidadesDream" class="novidades-dream">
 
-        <article>
-            <!-- <div class="card-tenis">
-                <img src="../Assets/CardsDream/Card-Novidades.png" alt="">
-            </div> -->
+        <article data-aos="zoom-out">
             <div class="wrapper">
                 <div class="container">
                     <input type="radio" name="slide" id="c1" checked>
@@ -201,9 +212,9 @@
         <aside>
             <h2>Novidades</h2>
             <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint, non pariatur temporibus harum
-                recusandae, iure cupiditate fugiat ipsa eveniet dolores beatae, cum porro reiciendis adipisci sit
-                consectetur veniam sequi incidunt.
+                Bem-vindo à seção onde a inovação encontra a tradição! Aqui em "Novidades", destacamos os lançamentos
+                mais recentes e emocionantes do mundo dos sneakers. Este ano, estamos orgulhosos de apresentar esses
+                lançamentos.
             </p>
         </aside>
 
@@ -219,7 +230,7 @@
                 <ul class="quick-links">
                     <li><a href="#sobreDream">Sobre</a></li>
                     <li><a href="#favoritosDream">Favoritos</a></li>
-                    <li><a href="#novidadesDream">Novidades</a></li>
+                    <!-- <li><a href="#novidades">Novidades</a></li> -->
                 </ul>
                 <span>&copy; 2024 Dream Sneakers. Todos os direitos reservados.</span>
             </div>
@@ -233,3 +244,11 @@
 
 
 </html>
+
+<!-- <script>
+    
+    // AOS.init({
+    //     duration: 1200,
+    // });
+
+</script> -->
