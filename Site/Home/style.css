@@ -16,7 +16,6 @@ body {
     display: flex;
     flex-direction: column;
     background: linear-gradient(175deg, rgba(185, 66, 66, 0.5), rgba(63, 140, 255, 0.75));
-
 }
 
 .home {

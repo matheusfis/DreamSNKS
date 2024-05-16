@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url(../Assets/Background\ Tenis\ Jordan.png);
+    background-size: cover;
+    /* width: 100%; */
+}
+
+.wrapper {
+    position: relative;
+    width: 750px;
+    height: 450px;
+    background: transparent;
+    border: 2px solid #0ef;
+}
+
+.wrapper .form-box-login {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background: red;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-size h2 {
+    font-style: 32px;
+    color: #fff;
+    text-align: center;
+}
+
+.form-box-login .input-box {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    /* background: seagreen; */
+    margin: 25px 0;
+}
+
+.input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid blue;
+}
+
+.input-box label {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+}
