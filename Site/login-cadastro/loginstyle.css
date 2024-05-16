@@ -12,7 +12,8 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-image: url(../Assets/Background\ Tenis\ Jordan.png);
+    /* background-image: url(../Assets/Background\ Tenis\ Jordan.png); */
+    background-color: grey;
     background-size: cover;
     /* width: 100%; */
 }
@@ -25,15 +26,19 @@ body {
     border: 2px solid #0ef;
 }
 
-.wrapper .form-box-login {
+.wrapper .form-box {
     position: absolute;
     top: 0;
     width: 50%;
     height: 100%;
-    background: red;
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.wrapper .form-box.login {
+    left: 0;
+    padding: 0 40px;
 }
 
 .form-size h2 {
@@ -42,7 +47,7 @@ body {
     text-align: center;
 }
 
-.form-box-login .input-box {
+.form-box .input-box {
     position: relative;
     width: 100%;
     height: 50px;
@@ -56,7 +61,17 @@ body {
     background: transparent;
     border: none;
     outline: none;
-    border-bottom: 2px solid blue;
+    border-bottom: 2px solid #fff;
+    font-size: 15px;
+    color: #fff;
+    padding-right: 22px;
+    font-weight: 500;
+    transition: .5s;
+}
+
+.input-box input:focus,
+.input-box input:valid {
+    border-bottom-color: #0ef ;
 }
 
 .input-box label {
@@ -67,4 +82,74 @@ body {
     font-size: 16px;
     color: #fff;
     pointer-events: none;
+}
+
+.input-box input:focus~label,
+.input-box input:valid~label {
+    top: -5px;
+    color: #0ef;
+}
+
+.input-box i {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    font-style: 18px;
+    color: #fff;
+}
+
+.input-box input:focus~i,
+.input-box input:valid~i {
+    color: #0ef;
+}
+
+.btn {
+    position: relative;
+    width: 100%;
+    height: 45px;
+    background: transparent;
+    border: 2px solid #0ef;
+    outline: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 600;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 300%;
+    background: linear-gradient(#081b29, #0ef, #081b29, #0ef);
+    z-index: -1;
+    transition: .5s;
+}
+
+.btn:hover::before {
+    top: 0;
+} 
+
+.form-box .logreg-link {
+    font-style: 14.5px;
+    color: #fff;
+    text-align: center;
+    margin: 20px 0 10px;
+}
+
+.logreg-link p a {
+    color: #0ef;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.logreg-link p a:hover {
+    text-decoration: underline;
+
 }
