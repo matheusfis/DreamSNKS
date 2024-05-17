@@ -11,11 +11,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    /* background-image: url(../Assets/Background\ Tenis\ Jordan.png); */
-    background-color: grey;
+    height: 100vh;
+    width: 100%;
+    background-image: url(../Assets/Background\ Tenis\ Jordan.png);
+    /* background-color: #091928 ; */
     background-size: cover;
-    /* width: 100%; */
+    background-repeat: no-repeat;
 }
 
 .wrapper {
@@ -23,8 +24,8 @@ body {
     width: 750px;
     height: 450px;
     background: transparent;
-    border: 2px solid #0ef;
-    box-shadow: 0 0 25px #0ef;
+    border: 2px solid #3E7CFA;
+    box-shadow: 0 0 25px #3E7CFA;
     overflow: hidden;
 }
 
@@ -118,7 +119,7 @@ body {
 
 .input-box input:focus,
 .input-box input:valid {
-    border-bottom-color: #0ef ;
+    border-bottom-color: #3E7CFA ;
 }
 
 .input-box label {
@@ -134,7 +135,7 @@ body {
 .input-box input:focus~label,
 .input-box input:valid~label {
     top: -5px;
-    color: #0ef;
+    color: #3E7CFA;
 }
 
 .input-box i {
@@ -148,7 +149,7 @@ body {
 
 .input-box input:focus~i,
 .input-box input:valid~i {
-    color: #0ef;
+    color: #3E7CFA;
 }
 
 .btn {
@@ -156,7 +157,7 @@ body {
     width: 100%;
     height: 45px;
     background: transparent;
-    border: 2px solid #0ef;
+    border: 2px solid #3E7CFA;
     outline: none;
     border-radius: 40px;
     cursor: pointer;
@@ -174,7 +175,7 @@ body {
     left: 0;
     width: 100%;
     height: 300%;
-    background: linear-gradient(#081b29, #0ef, #081b29, #0ef);
+    background: linear-gradient(#081b29, #3E7CFA, #081b29, #3E7CFA);
     z-index: -1;
     transition: .5s;
 }
@@ -191,14 +192,13 @@ body {
 }
 
 .logreg-link p a {
-    color: #0ef;
+    color: #3E7CFA;
     text-decoration: none;
     font-weight: 600;
 }
 
 .logreg-link p a:hover {
     text-decoration: underline;
-
 }
 
 .wrapper .info-text {
@@ -225,6 +225,7 @@ body {
     filter: blur(0);
     transition: .7s ease;
     transition-delay: calc(.1s * var(--j));
+    
 }
 
 .wrapper.active .info-text.login .animation {
@@ -272,9 +273,9 @@ body {
 }
 
 .info-text p {
-    font-size: 16px;
+    font-size: 15px;
     color: #fff;
-
+    /* text-align: right; */
 }
 
 .wrapper .bg-animate {
@@ -283,8 +284,10 @@ body {
     right: 0;
     width: 850px;
     height: 600px;
-    background: linear-gradient(45deg, #081b29, #0ef);
-    border-bottom: 3px solid #0ef;
+    background: linear-gradient(20deg, #3E7CFA, #152E45);
+    /* background-image: url(../Assets/AJ1\ spider\ man2.JPEG); */
+    background-size: contain;
+    border-bottom: 3px solid #3E7CFA;
     transform: rotate(10deg) skewY(40deg);
     transform-origin: bottom right;
     transition: 1.4s ease;
@@ -304,7 +307,7 @@ body {
     width: 850px;
     height: 700px;
     background: #081b29;
-    border-top: 3px solid #0ef;
+    border-top: 3px solid #3E7CFA;
     transform: rotate(-11deg) skewY(-41deg);
     transform: rotate(0) skewY(0);
     transform-origin: bottom left;
