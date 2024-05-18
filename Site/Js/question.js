@@ -1,7 +1,7 @@
 let questions = [
     {
         numb: 1,
-        questions: "Qual foi o tênis que NÃO foi lançado no ano de 2024?",
+        question: "Qual foi o tênis que NÃO foi lançado no ano de 2024?",
         answer: "C. Air Jordan 1 UNC Toe",
         options: [
             "A. Air Jordan 4 Bred Reimagined",
@@ -12,7 +12,7 @@ let questions = [
     },
     {
         numb: 2,
-        questions: "2. Qual tênis Michael B. Jordan usou na final de 1980 em que deu uma virada fantástica?",
+        question: "Qual tênis Michael B. Jordan usou na final de 1980 em que deu uma virada fantástica?",
         answer: "A. Air Jordan 1 Retro High OG",
         options: [
             "A. Air Jordan 1 Retro High OG",
@@ -23,8 +23,8 @@ let questions = [
     },
     {
         numb: 3,
-        questions: "Qual tênis foi banido da NBA por violar as regras da liga?",
-        answer: "A. Air Jordan 1 High Bred Banned ",
+        question: "Qual tênis foi banido da NBA por violar as regras da liga?",
+        answer: "A. Air Jordan 1 High Bred Banned",
         options: [
             "A. Air Jordan 1 High Bred Banned",
             "B. Nike Kyrie VI AS",
@@ -34,7 +34,7 @@ let questions = [
     },
     {
         numb: 4,
-        questions: "Qual tênis foi criado em homenagem a uma instituição que trata sobre a depressão?",
+        question: "Qual tênis foi criado em homenagem a uma instituição que trata sobre a depressão?",
         answer: "B. Nike Dunk SB Why So Sad",
         options: [
             "A. Air Max 90 Mental Health Awareness",
@@ -45,8 +45,8 @@ let questions = [
     },
     {
         numb: 5,
-        questions: "Qual a cor predominante do tênisNike  Dunk SB Why So Sad?",
-        answer: "",
+        question: "Qual a cor predominante do tênisNike  Dunk SB Why So Sad?",
+        answer: "A. Azul",
         options: [
             "A. Azul",
             "B. Vermelho",
@@ -55,3 +55,4 @@ let questions = [
         ]
     },
 ];
+

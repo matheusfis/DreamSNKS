@@ -106,6 +106,7 @@ body {
 
 .quiz-section {
     position: relative;
+    /* left: -50%; */
     left: 0;
     width: 100%;
     display: flex;
@@ -131,6 +132,17 @@ body {
     display: flex;
     flex-direction: column;
     padding: 20px 30px;
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(.9);
+}
+
+.quiz-section .quiz-box {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+    transition: 1s ease;
+    transition-delay: 1s;
 }
 
 .quiz-box h1 {
@@ -166,6 +178,7 @@ body {
     font-weight: 600;
 }
 
+/* ------------OPÇÕES------------ */
 .option-list .option {
     width: 100%;
     padding: 12px;
@@ -177,12 +190,26 @@ body {
     cursor: pointer;
 }
 
-
 .option-list .option:hover {
     background: rgba(255, 255, 255, .1); 
     border-color: rgba(255, 255, 255, .1);
 }
 
+.option-list .option.correct {
+    background: #09001d;
+    color: #00a63d;
+    border-color: #00a63d;
+}
+
+.option-list .option.incorrect {
+    background: #09001d;
+    color: #d60000;
+    border-color: #d60000;
+}
+
+.option-list .option.disabled {
+    pointer-events: none;
+}
 
 
 /* -------------------FOOTER QUIZ------------------- */
@@ -212,7 +239,7 @@ body {
     color: rgba(255, 255, 255, .3);
     font-weight: 600;
     cursor: pointer;
-    pointer-events: none;
+    /* pointer-events: none; */
     transition: .5s;
 }
 
