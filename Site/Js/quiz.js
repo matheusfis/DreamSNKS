@@ -25,10 +25,12 @@ continueBtn.onclick = () => {
 
     showQuestions(0);
     questionCounter(1);
+    headerScore();
 }
 
 let questionCount = 0; // Contador de perguntas
 let questionNumb = 1; // Número da pergunta atual
+let userScore = 0; // Pontuação do usuário
 
 const nextBtn = document.querySelector('.next-btn');
 
@@ -38,6 +40,8 @@ nextBtn.onclick = () => {
         showQuestions(questionCount); // Carrega a próxima pergunta
         questionNumb++;
         questionCounter(questionNumb); // Atualiza o contador de perguntas
+
+        nextBtn.classList.remove('active'); // remove a classe active, para só conseguir passar para a próxima pergunta se estiver respondido a pergunta atual
     } else {
         console.log('Quiz Completed');
     }
@@ -73,26 +77,37 @@ function optionSelected(answer) {
     // Verifica se a resposta selecionada é correta ou incorreta
     if (userAnswer === correctAnswer) {
         answer.classList.add('correct'); // Adiciona classe 'correct' se a resposta estiver correta
+        userScore++;
+        headerScore();
+        
     } else {
         answer.classList.add('incorrect'); // Adiciona classe 'incorrect' se a resposta estiver incorreta
     }
-            // Seleciona automaticamente a resposta correta se a resposta estiver incorreta
+            // Mostra  a resposta correta se a resposta estiver incorreta
             const allOptions = optionList.children.length;
             for (let i = 0; i < allOptions; i++) {
                 if (optionList.children[i].textContent.trim() === correctAnswer) {
                     optionList.children[i].setAttribute('class', 'option correct');
                 }
             }
+            
 
     // Desabilita outras opções após a seleção
     const options = document.querySelectorAll('.option');
     for (let i = 0; i < options.length; i++) {
         options[i].classList.add('disabled'); // Adiciona classe 'disabled' para desativar outras opções
     }
+
+    nextBtn.classList.add('active');
 }
 
 // Atualiza o contador de perguntas
 function questionCounter(index) {
     const questionTotal = document.querySelector('.question-total');
     questionTotal.textContent = `${index} of ${questions.length} Questions`;
+}
+
+function headerScore() {
+    const headerScoreText = document.querySelector('.header-score');
+    headerScoreText.textContent = `Score: ${userScore} / ${questions.length}`
 }
