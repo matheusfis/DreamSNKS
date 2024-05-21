@@ -22,18 +22,18 @@
             <h2 class="animation" style="--i:0; --j:21;">Login</h2>
             <form action="#">
                 <div class="input-box animation" style="--i:1; --j:22;">
-                    <input type="text" required>
+                    <input type="text" id="ipt_nome_log" required>
                     <label>Nome</label>
                     <i class="bx bxs-user"></i>
                 </div>
 
                 <div class="input-box animation" style="--i:2; --j:23;">
-                    <input type="password" required>
+                    <input type="password" id="ipt_senha_log" required>
                     <label>Senha</label>
                     <i class="bx bxs-lock-alt"></i>
                 </div>
 
-                <button type="submit" class="btn animation" style="--i:3; --j:24;">Entrar</button>
+                <button type="submit" class="btn animation" style="--i:3; --j:24;"  onclick="redirect()">Entrar</button>
                 <div class="logreg-link animation" style="--i:4; --j:25;">
                     <p>Não possui uma conta? <a href="#" class="register-link">
                             Registre-se
@@ -52,25 +52,25 @@
             <h2 class="animation" style="--i:17; --j:0;">Cadastre-se</h2>
             <form action="#">
                 <div class="input-box animation" style="--i:18; --j:1;">
-                    <input type="text" required>
-                    <label>Username</label>
+                    <input type="text" id="ipt_nome_cad" required>
+                    <label>Nome</label>
                     <i class="bx bxs-user"></i>
                 </div>
 
                 <div class="input-box animation" style="--i:19; --j:2;">
-                    <input type="text" required>
+                    <input type="text" id="ipt_email_cad" required>
                     <label>Email</label>
                     <i class="bx bxs-envelope"></i>
                 </div>
 
                 <div class="input-box animation" style="--i:20; --j:3;">
-                    <input type="password" required>
+                    <input type="password" id="ipt_senha_cad" required>
                     <label>Senha</label>
                     <i class="bx bxs-lock-alt"></i>
                 </div>
 
 
-                <button type="submit" class="btn animation" style="--i:21; --j:4;">Cadastrar</button>
+                <button type="submit" class="btn animation" style="--i:21; --j:4;"  onclick="redirect()">Cadastrar</button>
                 <div class="logreg-link animation" style="--i:22; --j:5;">
                     <p class="">Já possui uma conta? <a href="#" class="login-link">
                             Entrar

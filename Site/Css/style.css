@@ -123,12 +123,13 @@ body {
 .texto_centro .conheca {
     font-family: "Rubik Bubbles", system-ui;
     color: whitesmoke;
-    -webkit-text-stroke: 1.4px #3E7CFA;
+    -webkit-text-stroke: 1px #3E7CFA;
     font-size: 54px;
     text-align: center;
 }
 
-/* button {
+/* styles do botao 1
+button {
     width: 250px;
     height: 50px;
     font-size: 20px;
@@ -151,6 +152,7 @@ button:hover {
     transition: all 0.3s;
 } */
 
+/* styles botao 2 
 button {
     position: relative;
     margin-top: 20px;
@@ -185,7 +187,29 @@ button::before {
 
 button:hover::before {
     top: 0;
-} 
+}  */
+
+button {
+    width: 250px;
+    height: 55px;
+    background: #3E7CFA;
+    border: 2px solid #fff;
+    outline: none;
+    border-radius: 12px;
+    box-shadow: 0 0 10px #3E7CFA;
+    font-size: 17px;
+    color: #fff;
+    letter-spacing: 1px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .5s;
+    margin-top: 20px;
+}
+
+button:hover {
+    background: #09001d;
+    box-shadow: none;
+}
 
 /* -----------------------SOBRE----------------------- */
 
