@@ -185,10 +185,11 @@ body {
 } 
 
 .form-box .logreg-link {
-    font-style: 14.5px;
+    font-size: 14.5px;
     color: #fff;
     text-align: center;
     margin: 20px 0 10px;
+    word-wrap: normal;
 }
 
 .logreg-link p a {

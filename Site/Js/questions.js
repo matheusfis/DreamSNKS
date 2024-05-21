@@ -45,7 +45,7 @@ let questions = [
     },
     {
         numb: 5,
-        question: "Qual a cor predominante do tênisNike  Dunk SB Why So Sad?",
+        question: "Qual a cor predominante do tênis Nike Dunk SB Why So Sad?",
         answer: "A. Azul",
         options: [
             "A. Azul",
