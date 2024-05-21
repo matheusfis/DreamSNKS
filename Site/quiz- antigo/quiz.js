@@ -1,26 +1,28 @@
 const startBtn = document.querySelector('.start-btn');
 const popupInfo = document.querySelector('.popup-info');
 const exitBtn = document.querySelector('.exit-btn');
-const all = document.querySelector('.all-out-quiz');
+const main = document.querySelector('.main');
 const continueBtn = document.querySelector('.continue-btn');
 const quizSection = document.querySelector('.quiz-section');
 const quizBox = document.querySelector('.quiz-box');
 const optionList = document.querySelector('.option-list');
+const resultBox = document.querySelector('.result-box');
+
 
 startBtn.onclick = () => {
     popupInfo.classList.add('active');
-    all.classList.add('active');
+    main.classList.add('active');
 }
 
 exitBtn.onclick = () => {
     popupInfo.classList.remove('active');
-    all.classList.remove('active');
+    main.classList.remove('active');
 }
 
 continueBtn.onclick = () => {
     quizSection.classList.add('active');
     popupInfo.classList.remove('active');
-    all.classList.remove('active');
+    main.classList.remove('active');
     quizBox.classList.remove('active');
 
     showQuestions(0);
@@ -43,7 +45,8 @@ nextBtn.onclick = () => {
 
         nextBtn.classList.remove('active'); // remove a classe active, para só conseguir passar para a próxima pergunta se estiver respondido a pergunta atual
     } else {
-        console.log('Quiz Completed');
+        console.log('completed')
+        showResultBox();
     }
 }
 
@@ -110,4 +113,8 @@ function questionCounter(index) {
 function headerScore() {
     const headerScoreText = document.querySelector('.header-score');
     headerScoreText.textContent = `Score: ${userScore} / ${questions.length}`
+}
+
+function showResultBox(){
+    quizBox.classList.remove('active');
 }

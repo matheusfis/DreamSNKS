@@ -3,42 +3,48 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../Css/quiz.css">
+    <title>Quiz Dream</title>
+    <link rel="stylesheet" href="../Css/quizStyle.css">
 </head>
 
 <body>
 
-    <main class="all-out-quiz">
-        <button class="start-btn">Start quiz</button>
+    <main class="main">
+        <header class="header">
+            <a href="#" class="logo"><img src="../Assets/Logo dream SNKS.png" alt=""></a>
+
+            <nav class="navbar">
+                <a href="#" class="active">Home</a>
+                <a href="#">Dashboard</a>
+
+            </nav>
+        </header>
 
         <div class="container">
             <section class="quiz-section">
                 <div class="quiz-box">
-                    <h1>Dream Quiz</h1>
+                    <h1>Dream SNKS</h1>
                     <div class="quiz-header">
-                        <span>Quiz Website tutorials</span>
-                        <span class="header-score">Score: 0 / 5 </span>
+                        <span>Quiz sobre sneakers</span>
+                        <span class="header-score">Score: 0 / 5</span>
                     </div>
 
                     <h2 class="question-text">What does HTML stand for?</h2>
 
                     <div class="option-list">
                         <!-- <div class="option">
-                            <span>A. Lorem, ipsum dolor.Coloque a pergunta aqui </span>
+                            <span>A. Hyper Type Multi Language</span>
                         </div>
-
                         <div class="option">
-                            <span>B. Lorem, ipsum dolor.Coloque a pergunta aqui </span>
+                            <span>B. Hyper Text Multiple Language</span>
                         </div>
-
                         <div class="option">
-                            <span>C. Lorem, ipsum dolor.Coloque a pergunta aqui </span>
+                            <span>C. Hyper Text Markup Language</span>
                         </div>
-
                         <div class="option">
-                            <span>D. Lorem, ipsum dolor.Coloque a pergunta aqui </span>
+                            <span>D. Home Text Multi Language</span>
                         </div> -->
                     </div>
 
@@ -48,27 +54,54 @@
                     </div>
                 </div>
 
+                <div class="result-box">
+                    <h2>Quiz Result!</h2>
+                    <div class="percentage-container">
+                        <div class="circular-progress">
+                            <span class="progress-value">0%</span>
+                        </div>
+
+                        <span class="score-text">Your Score 0 out of 5</span>
+                    </div>
+
+                    <div class="buttons">
+                        <button class="tryAgain-btn">Try Again</button>
+                        <button class="goHome-btn">Go To Home</button>
+                    </div>
+                </div>
             </section>
-            <!-- -------------AQUI COLOQUE CONTEÚDOS DA HOME------------- -->
+
+            <section class="home">
+                <div class="home-content">
+                    <h1>Quiz Website</h1>
+                    <p>Bem-vindo ao nosso quiz exclusivo para apaixonados por sneakers. Clique no botão abaixo para
+                        começar e descubra o quanto você realmente sabe sobre o universo dos tênis mais icônicos.
+                    </p>
+                    <button class="start-btn">Start Quiz</button>
+                </div>
+            </section>
         </div>
+        
     </main>
+
     <div class="popup-info">
-        <h2>Quiz guide</h2>
-        <span class="info">1. Lorem ipsum dolor sit amet consectetur adipisicing.</span>
-        <span class="info">2. Lorem ipsum dolor sit amet consectetur adipisicing.</span>
-        <span class="info">3. Lorem ipsum dolor sit amet cons.</span>
-        <span class="info">4. Lorem ipsum dolor sit amet consectetur adipisicing.</span>
-        <span class="info">5. Lorem ipsum dolor sit amet consectetur adipisicing.</span>
+        <h2>Quiz Guide</h2>
+        <span class="info">1. O Quiz contém algumas perguntas sobre o conteúdo do Website.</span>
+        <span class="info">2. Preste atenção nas perguntas e nas alternativas, muitas respostas estão na
+            pergunta.</span>
+        <span class="info">3. Após finalizar o quiz você poderá ver a sua porcentagem de acertos.</span>
 
         <div class="btn-group">
-            <button class="info-btn exit-btn">Exit quiz</button>
+            <button class="info-btn exit-btn">Exit Quiz</button>
             <a href="#" class="info-btn continue-btn">Continue</a>
         </div>
     </div>
 
-    <script src="../Js/quiz.js"></script>
-    <script src="../Js/question.js"></script>
+    
 
+
+    <script src="../Js/questions.js"></script>
+    <script src="../Js/quizScript.js"></script>
 </body>
 
 </html>

@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Bubbles&display=swap');
+
 
 * {
     margin: 0;
@@ -26,6 +28,12 @@ body {
     z-index: 100;
 }
 
+.header a img {
+    width: 200px;
+    height: 100px;
+    margin-left: 40px;
+}
+
 .logo {
     font-size: 32px;
     color: #fff;
@@ -50,7 +58,7 @@ body {
 
 .main {
     min-height: 100vh;
-    background: url('') no-repeat;
+    background: url('../Assets/Background\ Tenis\ Jordan.png') no-repeat;
     background-size: cover;
     background-position: center;
     pointer-events: auto;
@@ -88,6 +96,7 @@ body {
     font-size: 78px;
     font-weight: 700;
     text-shadow: 0 0 10px rgba(0, 0, 0, .3);
+    
 }
 
 .home-content p {
@@ -190,8 +199,8 @@ body {
 }
 
 .popup-info .btn-group .info-btn:nth-child(2):hover {
-    background: #950170;
-    border-color: #950170;
+    background: #2c59b4;
+    border-color: #2c59b4;
 }
 
 .quiz-section {
@@ -337,8 +346,8 @@ body {
 }
 
 .quiz-footer .next-btn.active:hover {
-    background: #950170;
-    border-color: #950170;
+    background: #2c59b4;
+    border-color: #2c59b4;
 }
 
 .quiz-section .result-box {
@@ -417,7 +426,7 @@ body {
     width: 130px;
     height: 47px;
     background: #3E7CFA;
-    border: 2px solid #3E7CFA;
+    border: 2px solid #3e7cfa;
     outline: none;
     border-radius: 6px;
     font-size: 16px;
@@ -429,8 +438,8 @@ body {
 }
 
 .buttons button:nth-child(1):hover {
-    background: #950170;
-    border-color: #950170;
+    background: #2c59b4;
+    border-color: #2c59b4;
 }
 
 .buttons button:nth-child(2) {
@@ -442,3 +451,5 @@ body {
     background: #3E7CFA;
     color: #fff;
 }
+
+
