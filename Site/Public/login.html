@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream SNKS login</title>
+    <link rel="stylesheet" href="./Css/loginstyle.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+
+<body>
+
+
+    <div class="wrapper">
+        <span class="bg-animate"></span>
+        <span class="bg-animate2"></span>
+
+        <!-- -------------BOX PARA LOGIN------------- -->
+        <div id="login" class="form-box login">
+            <h2 class="animation" style="--i:0; --j:21;">Login</h2>
+            <form action="#">
+                <div class="input-box animation" style="--i:1; --j:22;">
+                    <input type="text" id="nome_log" required>
+                    <label>Nome</label>
+                    <i class="bx bxs-user"></i>
+                </div>
+
+                <div class="input-box animation" style="--i:2; --j:23;">
+                    <input type="password" id="senha_log" required>
+                    <label>Senha</label>
+                    <i class="bx bxs-lock-alt"></i>
+                </div>
+
+                <button type="submit" class="btn animation" style="--i:3; --j:24;"  onclick="entrar()">Entrar</button>
+                <div class="logreg-link animation" style="--i:4; --j:25;">
+                    <p>Não possui uma conta? <a href="#" class="register-link">
+                            Registre-se
+                        </a>
+                    </p>
+                </div>
+            </form>
+        </div>
+        <div class="info-text login">
+            <h2 class="animation" style="--i:0; --j:20;">Seja bem vindo!</h2>
+            <p class="animation" style="--i:1; --j:21;">Entre agora na sua conta e descubra suas estatísticas personalizadas! Veja seu desempenho no quiz e acompanhe seu progresso.</p>
+        </div>
+
+        <!-- -------------BOX PARA CADASTRO------------- -->
+        <div id="signUp" class="form-box register">
+            <h2 class="animation" style="--i:17; --j:0;">Cadastre-se</h2>
+            <form action="#">
+                <div class="input-box animation" style="--i:18; --j:1;">
+                    <input type="text" id="ipt_nome" required>
+                    <label>Nome</label>
+                    <i class="bx bxs-user"></i>
+                </div>
+
+                <div class="input-box animation" style="--i:19; --j:2;">
+                    <input type="text" id="ipt_email" required>
+                    <label>Email</label>
+                    <i class="bx bxs-envelope"></i>
+                </div>
+
+                <div class="input-box animation" style="--i:20; --j:3;">
+                    <input type="password" id="ipt_senha" required>
+                    <label>Senha</label>
+                    <i class="bx bxs-lock-alt"></i>
+                </div>
+
+
+                <button type="submit" class="btn animation" style="--i:21; --j:4;" onclick="cadastrar()">Cadastrar</button>
+                <div class="logreg-link animation" style="--i:22; --j:5;">
+                    <p class="">Já possui uma conta? <a href="#" class="login-link">
+                            Entrar
+                        </a>
+                    </p>
+                </div>
+            </form>
+        </div>
+
+        <div class="info-text register">
+            <h2 class="animation" style="--i:17; --j:0;">Bem vindo de volta!</h2>
+            <p class="animation" style="--i:18; --j:1;">Junte-se a nós e tenha acesso a um quiz exclusivo! Comece a acompanhar seu acertos em tempo real. É rápido, fácil e gratuito!</p>
+        </div>
+
+    </div>
+
+    <script src="./Js/login.js"></script>
+</body>
+
+</html>
+
+
+
+<script>
+    function cadastrar() {
+      
+  
+      //Recupere o valor da nova input pelo nome do id
+      // Agora vá para o método fetch logo abaixo
+      var nomeVar = ipt_nome.value;
+      var emailVar = ipt_email.value;
+      var senhaVar = ipt_senha.value;
+      if (
+        nomeVar == "" ||
+        emailVar == "" ||
+        senhaVar == "" 
+      ) {
+        // cardErro.style.display = "block";
+        alert
+          ("Mensagem de erro para todos os campos em branco")
+  
+        return false;
+      } else {
+        setInterval(sumirMensagem, 5000);
+      }
+  
+      // Enviando o valor da nova input
+      fetch("/usuarios/cadastrar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          // crie um atributo que recebe o valor recuperado aqui
+          // Agora vá para o arquivo routes/usuario.js
+          nomeServer: nomeVar,
+          emailServer: emailVar,
+          senhaServer: senhaVar,
+        }),
+      })
+        .then(function (resposta) {
+          console.log("resposta: ", resposta);
+  
+          if (resposta.ok) {
+            // cardErro.style.display = "block";
+  
+            alert ("Cadastro realizado com sucesso! Redirecionando para tela de Login...")
+  
+            setTimeout(() => {
+              window.location = "#login";
+            }, "2000");
+  
+            limparFormulario();
+            finalizarAguardar();
+          } else {
+            throw "Houve um erro ao tentar realizar o cadastro!";
+          }
+        })
+        .catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+          finalizarAguardar();
+        });
+  
+      return false;
+    }
+  
+
+    function sumirMensagem() {
+      alert ("none")
+    }
+
+
+
+// ------------------SCRIPT PARA O LOGIN------------------
+
+function entrar() {
+        aguardar();
+
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+
+        if (emailVar == "" || senhaVar == "") {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            finalizarAguardar();
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id;
+                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+
+                    setTimeout(function () {
+                        window.location = "./dashboard/cards.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+    function sumirMensagem() {
+        cardErro.style.display = "none"
+    }
+
+  </script>
