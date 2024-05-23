@@ -206,7 +206,7 @@ body {
 .quiz-section {
     position: relative;
     left: -50%;
-    width: 100%;
+    width: 100%;    
     background: #09001d;
     display: flex;
     justify-content: center;
@@ -375,7 +375,7 @@ body {
 }
 
 .result-box h2 {
-    font-size: 52px;
+    font-size: 42px;
 }
 
 .result-box .percentage-container {
@@ -423,13 +423,13 @@ body {
 }
 
 .buttons button {
-    width: 130px;
+    width: 200px;
     height: 47px;
     background: #3E7CFA;
     border: 2px solid #3e7cfa;
     outline: none;
     border-radius: 6px;
-    font-size: 16px;
+    font-size: 15px;
     color: #fff;
     font-weight: 600;
     margin: 0 20px 20px;
@@ -438,8 +438,9 @@ body {
 }
 
 .buttons button:nth-child(1):hover {
-    background: #2c59b4;
+    background: transparent;
     border-color: #2c59b4;
+    color: #3E7CFA;
 }
 
 .buttons button:nth-child(2) {

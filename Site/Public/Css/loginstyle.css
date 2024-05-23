@@ -226,7 +226,6 @@ body {
     filter: blur(0);
     transition: .7s ease;
     transition-delay: calc(.1s * var(--j));
-    
 }
 
 .wrapper.active .info-text.login .animation {
