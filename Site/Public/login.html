@@ -22,9 +22,9 @@
             <h2 class="animation" style="--i:0; --j:21;">Login</h2>
             <form action="#">
                 <div class="input-box animation" style="--i:1; --j:22;">
-                    <input type="text" id="nome_log" required>
-                    <label>Nome</label>
-                    <i class="bx bxs-user"></i>
+                    <input type="text" id="email_log" required>
+                    <label>Email</label>
+                    <i class="bx bxs-envelope"></i>
                 </div>
 
                 <div class="input-box animation" style="--i:2; --j:23;">
@@ -113,10 +113,7 @@
           ("Mensagem de erro para todos os campos em branco")
   
         return false;
-      } else {
-        setInterval(sumirMensagem, 5000);
-      }
-  
+      } 
       // Enviando o valor da nova input
       fetch("/usuarios/cadastrar", {
         method: "POST",
@@ -144,42 +141,37 @@
             }, "2000");
   
             limparFormulario();
-            finalizarAguardar();
+            
           } else {
             throw "Houve um erro ao tentar realizar o cadastro!";
           }
         })
         .catch(function (resposta) {
           console.log(`#ERRO: ${resposta}`);
-          finalizarAguardar();
+          
         });
   
       return false;
     }
   
 
-    function sumirMensagem() {
-      alert ("none")
-    }
+
 
 
 
 // ------------------SCRIPT PARA O LOGIN------------------
 
 function entrar() {
-        aguardar();
+        
 
-        var emailVar = email_input.value;
-        var senhaVar = senha_input.value;
+        var emailVar = email_log.value;
+        var senhaVar = senha_log.value;
 
         if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            finalizarAguardar();
+            // cardErro.style.display = "block"
+            alert("Mensagem de erro para todos os campos em branco");
+            
             return false;
-        }
-        else {
-            setInterval(sumirMensagem, 5000)
         }
 
         console.log("FORM LOGIN: ", emailVar);
@@ -206,22 +198,17 @@ function entrar() {
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id;
-                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
 
                     setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
+                        window.location = "./Quiz.html";
                     }, 1000); // apenas para exibir o loading
 
                 });
 
             } else {
-
+                alert('Senha ou email incorretos')
                 console.log("Houve um erro ao tentar realizar o login!");
 
-                resposta.text().then(texto => {
-                    console.error(texto);
-                    finalizarAguardar(texto);
-                });
             }
 
         }).catch(function (erro) {
@@ -229,10 +216,6 @@ function entrar() {
         })
 
         return false;
-    }
-
-    function sumirMensagem() {
-        cardErro.style.display = "none"
     }
 
   </script>
