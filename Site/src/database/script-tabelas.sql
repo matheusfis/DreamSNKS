@@ -29,3 +29,5 @@ CREATE TABLE resultadoQuiz (
 
 
 SELECT * FROM usuario;
+
+TRUNCATE usuario;

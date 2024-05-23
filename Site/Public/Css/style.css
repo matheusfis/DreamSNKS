@@ -190,14 +190,14 @@ button:hover::before {
 }  */
 
 button {
-    width: 250px;
-    height: 55px;
+    width: 236px;
+    height: 52px;
     background: #3E7CFA;
     border: 2px solid #fff;
     outline: none;
     border-radius: 12px;
     box-shadow: 0 0 10px #3E7CFA;
-    font-size: 17px;
+    font-size: 18px;
     color: #fff;
     letter-spacing: 1px;
     font-weight: 600;

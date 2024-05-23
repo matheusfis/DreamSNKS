@@ -133,13 +133,13 @@ function optionSelected(answer) {
 // Atualiza o contador  perguntas
 function questionCounter(index) {
     const questionTotal = document.querySelector('.question-total');
-    questionTotal.textContent = `${index} of ${questions.length} Questions`;
+    questionTotal.textContent = `${index} de ${questions.length} Questões`;
 }
 
 // Atualiza a pontuação 
 function headerScore() {
     const headerScoreText = document.querySelector('.header-score');
-    headerScoreText.textContent = `Score: ${userScore} / ${questions.length}`;
+    headerScoreText.textContent = `Pontuação: ${userScore} / ${questions.length}`;
 }
 
 // Mostra a caixa de resultados
@@ -148,7 +148,7 @@ function showResultBox() {
     resultBox.classList.add('active');
 
     const scoreText = document.querySelector('.score-text');
-    scoreText.textContent = `Your Score ${userScore} out of ${questions.length}`;
+    scoreText.textContent = `Seus acertos: ${userScore} de ${questions.length}`;
 
     const circularProgress = document.querySelector('.circular-progress');
     const progressValue = document.querySelector('.progress-value');
