@@ -143,17 +143,17 @@ function headerScore() {
 }
 
 // Mostra a caixa de resultados
-function showResultBox() {
-    quizBox.classList.remove('active');
-    resultBox.classList.add('active');
+function showResultBox() { 
+    quizBox.classList.remove('active'); // Fecha a caixa da seção do quiz
+    resultBox.classList.add('active'); // Adiciona a box do resultado
 
-    const scoreText = document.querySelector('.score-text');
-    scoreText.textContent = `Seus acertos: ${userScore} de ${questions.length}`;
+    const scoreText = document.querySelector('.score-text'); 
+    scoreText.textContent = `Seus acertos: ${userScore} de ${questions.length}`; 
 
     const circularProgress = document.querySelector('.circular-progress');
     const progressValue = document.querySelector('.progress-value');
     let progressStartValue = -1;
-    let progressEndValue = (userScore / questions.length) * 100;
+    let progressEndValue = (userScore / questions.length) * 100; // Calculo matematico referente a porcentagem de acertos
     let speed = 20;
 
     // Atualiza o progresso do grafico até chegar no ultimo valor 
