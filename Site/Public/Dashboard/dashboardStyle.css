@@ -1,0 +1,194 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+
+body {
+    display: flex;
+    height: 100vh;
+    background-color: #f4f5f7;
+}
+
+/* Container principal */
+.container {
+    display: flex;
+    width: 100%;
+}
+
+.barra-lateral {
+    width: 240px;
+    background-color: #1c1e21;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Cabeçalho da barra lateral */
+.cabecalho-barra-lateral {
+    margin-bottom: 20px;
+}
+
+/* Título da barra lateral */
+.cabecalho-barra-lateral h2 {
+    font-size: 24px;
+    color: #fff;
+}
+
+/* Navegação da barra lateral */
+.navegacao-barra-lateral ul {
+    list-style-type: none;
+}
+
+.navegacao-barra-lateral ul li {
+    margin-bottom: 15px;
+}
+
+/* Links de navegação */
+.navegacao-barra-lateral ul li a {
+    text-decoration: none;
+    color: #bbb;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+}
+
+.navegacao-barra-lateral ul li a i {
+    margin-right: 10px;
+}
+
+.navegacao-barra-lateral ul li a:hover {
+    color: #fff;
+}
+
+/* Conteúdo principal */
+.conteudo-principal {
+    flex-grow: 1;
+    background-color: #f4f5f7;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+/* Cabeçalho do conteúdo principal */
+.cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Título do cabeçalho */
+.cabecalho h1 {
+    font-size: 32px;
+    color: #333;
+}
+
+/* infos p usuario */
+.info-usuario {
+    display: flex;
+    align-items: center;
+}
+
+/* visao geral */
+.visao-geral-analitica {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+/* cards */
+.cartao {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    flex: 1;
+    margin-right: 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.cartao:last-child {
+    margin-right: 0;
+}
+
+.cartao:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* titulo dos cards */
+.cartao h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cartao h3 i {
+    margin-right: 8px;
+}
+
+/* texto dos cards */
+.cartao p {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* classe para cores */
+.verde {
+    color: #4caf50;
+}
+
+.vermelho {
+    color: #f44336;
+}
+
+/* graficos */
+.graficos {
+    display: flex;
+    justify-content: space-between;
+}
+
+.grafico {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    margin-right: 20px;
+    height: 350px; /* Aumentando o tamanho dos gráficos */
+}
+
+.grafico:last-child {
+    margin-right: 0;
+}
+
+/* titulo graficos */
+.grafico h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #333;
+}
+
+/* conteudo grafico */
+.conteudo-grafico {
+    height: 260px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f4f5f7;
+    border-radius: 8px;
+    border: 1px solid #ddd; 
+}
