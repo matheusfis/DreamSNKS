@@ -36,16 +36,18 @@ continueBtn.onclick = () => {
 
 // Tenta novamente o quiz
 tryAgainBtn.onclick = () => {
-    quizBox.classList.add('active');
-    nextBtn.classList.remove('active');
-    resultBox.classList.remove('active');
+    // quizBox.classList.add('active');
+    // nextBtn.classList.remove('active');
+    // resultBox.classList.remove('active');
 
-    questionCount = 0;
-    questionNumb = 1;
-    userScore = 0;
-    showQuestions(questionCount);
-    questionCounter(questionNumb);
-    headerScore();
+    // questionCount = 0;
+    // questionNumb = 1;
+    // userScore = 0;
+    // showQuestions(questionCount);
+    // questionCounter(questionNumb);
+    // headerScore();
+
+    window.location.href = './dashboard.html';
 }
 
 // Volta para a tela inicial
