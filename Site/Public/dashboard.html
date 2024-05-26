@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./Assets/Logo nuvem, dream SNKS.png" type="image/png">
+    <title>Dashboard Dream</title>
+    <link rel="stylesheet" href="./Css/dashboardStyle.css">
+</head>
+
+<body>
+
+    <main class="main">
+        <header class="header">
+            <a href="#" class="logo"><img src="./Assets/LOGO branco DREAM SNKS.png" alt=""></a>
+
+            <nav class="navbar">
+                <a href="#">Quiz</a>
+                <a href="#" class="active">Dashboard</a>
+                <a href="#">Sair da sua conta</a>
+
+            </nav>
+        </header>
+
+        <div class="container">
+            <main class="conteudo-principal">
+                <header class="cabecalho">
+                    <h1>Dashboard</h1>
+                    <div class="info-usuario">
+                        <h3>Bem vindo, usuario</h3>
+                    </div>
+                </header>
+                <!-- visão geral-->
+                <section class="visao-geral-analitica">
+                    <div class="cartao">
+                        <h3><i class="fas fa-check check-icon"></i>Sua média de acertos</h3>
+                        <p>70%</p>
+                    </div>
+                    <div class="cartao">
+                        <h3><i class="fas fa-check check-icon"></i>Média de acertos dos usuários</h3>
+                        <p>80%</p>
+                    </div>
+                    <div class="cartao">
+                        <h3><i class="fas fa-percentage"></i>Sua maior pontuação</h3>
+                        <p>4/5 pts</p>
+                    </div>
+                    <div class="cartao">
+                        <h3><i class="fas fa-percentage"></i>Maior pontuação dos usuários</h3>
+                        <p>5/5 pts</p>
+                    </div>
+                </section>
+                <!-- seção pro grafico -->
+                <section class="graficos">
+                    <div class="grafico">
+                        <h3>Gráfico de acertos</h3>
+                        <div class="conteudo-grafico">
+                            <!-- gráfico aqui -->
+                            <div class="chart-container">
+                                <canvas id="grafico-usuario"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grafico">
+                        <h3>Gráfico de erros</h3>
+                        <div class="conteudo-grafico">
+                            <!-- gráfico aqui -->
+                            <div class="chart-container">
+                                <canvas id="grafico-global"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</body>
+
+</html>
+
+<!-- ------SCRIPT PARA GRAFICOS------ -->
+
+<script>
+    const graficoUser = document.getElementById('grafico-usuario').getContext('2d');
+    const GraficoGlobal = document.getElementById('grafico-global').getContext('2d');
+
+    const chartOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                display: true,
+                position: 'top',
+                labels: {
+                    font: {
+                        size: 14,
+                        weight: 'bold'
+                    },
+                    color: '#000'
+                }
+            },
+            tooltip: {
+                callbacks: {
+                    label: function (context) {
+                        let label = context.dataset.label || '';
+                        if (label) {
+                            label += ': ';
+                        }
+                        label += context.parsed.y;
+                        return label;
+                    }
+                }
+            }
+        },
+        scales: {
+            x: {
+                ticks: {
+                    font: {
+                        size: 12,
+                        weight: 'bold'
+                    },
+                    color: '#000'
+                },
+                grid: {
+                    display: false
+                }
+            },
+            y: {
+                beginAtZero: true,
+                ticks: {
+                    font: {
+                        size: 12,
+                        weight: 'bold'
+                    },
+                    color: '#000'
+                },
+                grid: {
+                    color: 'rgba(0, 0, 0, 0.1)'
+                }
+            }
+        }
+    };
+
+    const dataUser = {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        datasets: [{
+            label: 'Seus acertos',
+            data: [65, 59, 80, 81, 56, 55, 40],
+            fill: false,
+            borderColor: 'rgba(50, 255, 90, 1)',
+            tension: 0.2
+        }, {
+            label: 'Acertos dos usuarios',
+            data: [28, 48, 40, 19, 86, 27, 90],
+            fill: false,
+            borderColor: 'rgba(10, 50, 255, 1)',
+            tension: 0.2
+        }]
+    };
+
+    const dataGlobal = {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        datasets: [{
+            label: 'Seus erros',
+            data: [65, 59, 80, 81, 56, 55, 40],
+            fill: false,
+            borderColor: 'rgba( 255, 0, 60, 1)',
+            tension: 0.2
+        }, {
+            label: 'Erros dos usuarios',
+            data: [28, 48, 40, 19, 86, 27, 90],
+            fill: false,
+            borderColor: 'rgba(255, 165, 0, 1)',
+            tension: 0.2
+        }]
+
+    };
+
+    // Grafico da média de acertos do usuário logado 
+    new Chart(graficoUser, {
+        type: 'line',
+        data: dataUser,
+        options: chartOptions
+    });
+
+    // Grafico da média de acertos de todos os usuários 
+    new Chart(GraficoGlobal, {
+        type: 'line',
+        data: dataGlobal,
+        options: chartOptions
+    });
+
+</script>
