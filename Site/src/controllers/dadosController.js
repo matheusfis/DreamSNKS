@@ -1,7 +1,7 @@
 var dadosModel = require("../models/dadosModel");
 
 function puxarMaxAcertos(req, res) {
-    var fkUsuario = req.body.idUsuarioServer
+    var fkUsuario = req.body.idUsuarioServer;
 
     console.log(`Puxando os dados`);
 
@@ -20,7 +20,7 @@ function puxarMaxAcertos(req, res) {
 }
 
 function puxarMaxTentativas(req, res) {
-    var fkUsuario = req.body.idUsuarioServer
+    var fkUsuario = req.body.idUsuarioServer;
 
     console.log(`Puxando os dados`);
 
@@ -39,7 +39,7 @@ function puxarMaxTentativas(req, res) {
 }
 
 function puxarTentativasAcertos(req, res) {
-    var fkUsuario = req.body.idUsuarioServer
+    var fkUsuario = req.body.idUsuarioServer;
 
     console.log(`Puxando os dados`);
 

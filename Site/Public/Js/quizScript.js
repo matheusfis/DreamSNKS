@@ -145,12 +145,12 @@ function headerScore() {
 }
 
 // Mostra a caixa de resultados
-function showResultBox() { 
+function showResultBox() {
     quizBox.classList.remove('active'); // Fecha a caixa da seção do quiz
     resultBox.classList.add('active'); // Adiciona a box do resultado
 
-    const scoreText = document.querySelector('.score-text'); 
-    scoreText.textContent = `Seus acertos: ${userScore} de ${questions.length}`; 
+    const scoreText = document.querySelector('.score-text');
+    scoreText.textContent = `Seus acertos: ${userScore} de ${questions.length}`;
 
     const circularProgress = document.querySelector('.circular-progress');
     const progressValue = document.querySelector('.progress-value');
@@ -168,4 +168,21 @@ function showResultBox() {
             clearInterval(progress);
         }
     }, speed);
+
+    // Fetch para enviar os arquivos para o banco
+    fetch(`quizRoute/registrar/${ID_USUARIO}`, {
+        method: "POST",
+        headers: {
+            "Content-type": "application/json"
+        },
+        body: JSON.stringify({
+            idQuizServer: idQuiz,
+            idUsuarioServer: ID_USUARIO,
+            acertosServer: questoesAcertos
+        })
+    }).then(res => {
+        console.log(res);
+    })
+    console.log(questoesAcertos);
+
 }
