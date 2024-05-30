@@ -9,7 +9,10 @@ const quizBox = document.querySelector('.quiz-box');
 const resultBox = document.querySelector('.result-box');
 const tryAgainBtn = document.querySelector('.tryAgain-btn');
 const goHomeBtn = document.querySelector('.goHome-btn');
+const ID_USUARIO = Number(sessionStorage.getItem("ID_USUARIO"));
 
+
+console.log(`ID-USUARIO: ${ID_USUARIO}`)
 // Inicia o quiz
 startBtn.onclick = () => {
     popupInfo.classList.add('active');
@@ -68,6 +71,9 @@ let questionCount = 0;
 let questionNumb = 1;
 let userScore = 0;
 
+let idQuiz = 1;
+let questoesErros = 0;
+
 const nextBtn = document.querySelector('.next-btn');
 
 // Avança para a proxima pergunta
@@ -112,9 +118,10 @@ function optionSelected(answer) {
 
     if (userAnswer == correctAnswer) {
         answer.classList.add('correct');
-        userScore += 1;
+        userScore++;
         headerScore();
     } else {
+        questoesErros++;
         answer.classList.add('incorrect');
         // Marca a resposta correta se a resposta for errada
         for (let i = 0; i < allOptions; i++) {
@@ -146,6 +153,7 @@ function headerScore() {
 
 // Mostra a caixa de resultados
 function showResultBox() {
+
     quizBox.classList.remove('active'); // Fecha a caixa da seção do quiz
     resultBox.classList.add('active'); // Adiciona a box do resultado
 
@@ -168,7 +176,12 @@ function showResultBox() {
             clearInterval(progress);
         }
     }, speed);
+    fetchQuiz()
 
+}
+
+function fetchQuiz() {
+    qtdAcertos = userScore;
     // Fetch para enviar os arquivos para o banco
     fetch(`quizRoute/registrar/${ID_USUARIO}`, {
         method: "POST",
@@ -178,11 +191,12 @@ function showResultBox() {
         body: JSON.stringify({
             idQuizServer: idQuiz,
             idUsuarioServer: ID_USUARIO,
-            acertosServer: questoesAcertos
+            qtdAcertosServer: qtdAcertos,
+            qtdErrosServer: questoesErros
         })
     }).then(res => {
         console.log(res);
     })
-    console.log(questoesAcertos);
-
+    console.log(`Seus acertos: ${qtdAcertos} Seus erros: ${questoesErros}`);
+    questoesErros = 0;
 }

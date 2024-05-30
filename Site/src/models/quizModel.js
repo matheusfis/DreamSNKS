@@ -1,23 +1,23 @@
-var database = require("../database/config")
+var database = require("../database/config");
 
-function puxarUlitmoID(fkUsuario) {
+function puxarUltimoID(fkUsuario) {
     var instrucaoSql = `
-        SELECT MAX(idTentativa) AS idTentativa FROM tentativasQuiz WHERE fkUsuario = ${fkUsuario};
+        SELECT MAX(idResultadoQuiz) AS idResultadoQuiz FROM resultadoQuiz WHERE fkUsuario = ${fkUsuario};
     `;
-    console.log('Puxando o ultimo idTentativa' + instrucaoSql)
-    return database.executar(instrucaoSql);
-} 
-
-function registrar(idTentativa, fkUsuario, fkQuiz, acertos) {
-    var instrucaoSql = `
-        INSERT INTO tentativasQuiz (idTentativa, fkUsuario, fkQuiz, acertos) VALUES ('${idTentativa}', '${fkUsuario}', '${fkQuiz}', '${acertos}');
-    `;
-    console.log('Registrando dados da tentativa do quiz' + instrucaoSql)
+    console.log('Puxando o último idResultadoQuiz: ' + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
+function registrar(idResultadoQuiz, fkUsuario, fkQuiz, qtdAcertos, qtdErros) {
+    var instrucaoSql = `
+        INSERT INTO resultadoQuiz (idResultadoQuiz, fkUsuario, fkQuiz, qtdAcertos, qtdErros)
+        VALUES (${idResultadoQuiz}, ${fkUsuario}, ${fkQuiz}, ${qtdAcertos}, ${qtdErros});
+    `;
+    console.log('Registrando dados da tentativa do quiz: ' + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
 
 module.exports = {
     registrar,
-    puxarUlitmoID
+    puxarUltimoID
 };
