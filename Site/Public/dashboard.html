@@ -18,7 +18,7 @@
             <a href="#" class="logo"><img src="./Assets/LOGO branco DREAM SNKS.png" alt=""></a>
 
             <nav class="navbar">
-                <a href="#">Quiz</a>
+                <a href="./Quiz.html">Quiz</a>
                 <a href="#" class="active">Dashboard</a>
                 <a href="#">Sair da sua conta</a>
 
@@ -55,7 +55,7 @@
                 <!-- seção pro grafico -->
                 <section class="graficos">
                     <div class="grafico">
-                        <h3>Gráfico de acertos</h3>
+                        <h3>Gráfico dos ultimos acertos</h3>
                         <div class="conteudo-grafico">
                             <!-- gráfico aqui -->
                             <div class="chart-container">
@@ -64,7 +64,7 @@
                         </div>
                     </div>
                     <div class="grafico">
-                        <h3>Gráfico de erros</h3>
+                        <h3>Gráfico dos ultimos erros</h3>
                         <div class="conteudo-grafico">
                             <!-- gráfico aqui -->
                             <div class="chart-container">
@@ -85,12 +85,13 @@
 
 <!-- ------SCRIPT PARA GRAFICOS------ -->
 <script>
-    let chartUsuario;
-    let chartGlobal;
-
-    document.addEventListener('DOMContentLoaded', function() {
+    let chartUsuario; 
+    let chartGlobal;  
+    document.addEventListener('DOMContentLoaded', function () {
+        // recebe o ID armazenado no session.STORAGE
         const fkUsuario = sessionStorage.getItem('ID_USUARIO');
-        
+
+        // se a FK existir, chama as funções para obter os dados
         if (fkUsuario) {
             obterMediaAcertosUsuario(fkUsuario);
             obterMediaAcertosUsuarios(fkUsuario);
@@ -100,50 +101,60 @@
         }
     });
 
+    // função para realizar uma requisição POST e retornar os dados em JSON
     function fetchData(route, body) {
         return fetch(route, {
-            method: "POST",
+            method: "POST", // define a requisição como POST
             headers: {
-                "Content-Type": "application/json",
+                "Content-Type": "application/json", // define a requisição como um JSON
             },
-            body: JSON.stringify(body),
-        }).then(response => response.json());
+            body: JSON.stringify(body), // converte o corpo da requisição para um JSON
+        }).then(response => response.json()); // converte a resposta para um JSON
     }
 
+    // função para obter a média de acertos do usuário
     function obterMediaAcertosUsuario(fkUsuario) {
         fetchData('/dadosRoute/mediaAcertosUsuario', { idUsuarioServer: fkUsuario })
             .then(data => {
+                // atualiza o HTML e coloca a média de acertos do usuário
                 document.getElementById('mediaAcertosUsuario').innerText = data[0].mediaAcertos + '%';
             }).catch(error => console.error('Erro ao obter média de acertos do usuário:', error));
     }
 
+    // função para obter a média de acertos de todos os usuários
     function obterMediaAcertosUsuarios(fkUsuario) {
         fetchData('/dadosRoute/mediaAcertosUsuarios', { idUsuarioServer: fkUsuario })
             .then(data => {
+                // atualiza o HTML e coloca a média de acertos de todos os usuários
                 document.getElementById('mediaAcertosUsuarios').innerText = data[0].mediaAcertosUsuarios + '%';
             }).catch(error => console.error('Erro ao obter média de acertos dos usuários:', error));
     }
 
+    // função para obter a maior pontuação do usuário
     function obterMaxPontuacaoUsuario(fkUsuario) {
         fetchData('/dadosRoute/maxPontuacaoUsuario', { idUsuarioServer: fkUsuario })
             .then(data => {
+                // atualiza o HTML e coloca a maior pontuação do usuário
                 document.getElementById('maxPontuacaoUsuario').innerText = data[0].maxPontuacao + '/10 pts';
             }).catch(error => console.error('Erro ao obter maior pontuação do usuário:', error));
     }
 
+    // função para obter a maior pontuação de todos os usuários
     function obterMaxPontuacaoUsuarios(fkUsuario) {
         fetchData('/dadosRoute/maxPontuacaoUsuarios', { idUsuarioServer: fkUsuario })
             .then(data => {
+                // atualiza o HTML e coloca a maior pontuação de todos os usuários
                 document.getElementById('maxPontuacaoUsuarios').innerText = data[0].maxPontuacaoUsuarios + '/10 pts';
             }).catch(error => console.error('Erro ao obter maior pontuação dos usuários:', error));
     }
 
+    // função para obter os dados dos gráficos
     function obterDadosGraficos(fkUsuario) {
-        const numTentativas = 7; // Número fixo de tentativas a serem exibidas
+        const numTentativas = 7; // numero fixo de tentativas a serem exibidas
 
         fetchData('/dadosRoute/tentativasAcertosErros', { idUsuarioServer: fkUsuario })
             .then(data => {
-                console.log('Dados brutos:', data); // Log dos dados retornados
+                console.log('Dados brutos:', data); 
 
                 const labels = [];
                 const acertosIndividuais = [];
@@ -155,24 +166,15 @@
                     errosIndividuais.push(item.Erros);
                 });
 
-                const lastAcertos = acertosIndividuais[acertosIndividuais.length - 1];
-                const lastErros = errosIndividuais[errosIndividuais.length - 1];
-
-                while (labels.length < numTentativas) {
-                    labels.push('');
-                    acertosIndividuais.push(lastAcertos);
-                    errosIndividuais.push(lastErros);
-                }
-
                 console.log('Labels:', labels);
                 console.log('Acertos Individuais:', acertosIndividuais);
                 console.log('Erros Individuais:', errosIndividuais);
 
-                // Para os dados dos usuários, chamamos outra função
+                // para os dados dos usuários, chamamos outra função
                 fetchData('/dadosRoute/tentativasAcertosErrosUsuarios', { idUsuarioServer: fkUsuario })
                     .then(dataUsuarios => {
-                        const acertosUsuarios = new Array(numTentativas).fill(lastAcertos);
-                        const errosUsuarios = new Array(numTentativas).fill(lastErros);
+                        const acertosUsuarios = new Array(numTentativas).fill(0);
+                        const errosUsuarios = new Array(numTentativas).fill(0);
 
                         dataUsuarios.forEach((item, index) => {
                             if (index < numTentativas) {
@@ -184,72 +186,86 @@
                         console.log('Acertos Usuários:', acertosUsuarios);
                         console.log('Erros Usuários:', errosUsuarios);
 
-                        plotarGrafico('grafico-usuario', labels, acertosIndividuais, acertosUsuarios, 'Seus acertos', 'Acertos dos usuarios', 'rgba(50, 255, 90, 1)', 'rgba(10, 50, 255, 1)', chartUsuario);
-                        plotarGrafico('grafico-global', labels, errosIndividuais, errosUsuarios, 'Seus erros', 'Erros dos usuarios', 'rgba(255, 0, 60, 1)', 'rgba(255, 165, 0, 1)', chartGlobal);
+                        plotarGrafico('grafico-usuario', labels, acertosIndividuais, acertosUsuarios, 'Seus acertos', 'Acertos de outros usuários', 'rgba(50, 255, 90, 0.5)', 'rgba(10, 50, 255, 0.5)', chartUsuario);
+                        plotarGrafico('grafico-global', labels, errosIndividuais, errosUsuarios, 'Seus erros', 'Erros de outros usuários', 'rgba(255, 0, 60, 0.5)', 'rgba(255, 165, 0, 0.5)', chartGlobal);
                     })
                     .catch(error => console.error('Erro ao obter dados dos gráficos dos usuários:', error));
             }).catch(error => console.error('Erro ao obter dados dos gráficos:', error));
     }
 
-    function plotarGrafico(elementId, labels, data1, data2, label1, label2, borderColor1, borderColor2, chartInstance) {
+    // função para plotar o gráfico
+    function plotarGrafico(elementId, labels, data1, data2, label1, label2, backgroundColor1, backgroundColor2, chartInstance) {
         const ctx = document.getElementById(elementId).getContext('2d');
-        
-        // Destroy existing chart instance if it exists
+
+        // exclui o grafico chartInstance existente, se existir
         if (chartInstance) {
             chartInstance.destroy();
         }
 
         chartInstance = new Chart(ctx, {
-            type: 'line',
+            type: 'bar', // colocando o tipo de gráfico como de barras
             data: {
-                labels: labels,
+                labels: labels, // definindo os rótulos no eixo X
                 datasets: [{
-                    label: label1,
-                    data: data1,
-                    fill: false,
-                    borderColor: borderColor1,
-                    tension: 0.1
+                    label: label1, // definindo os rótulos do primeiro conjunto de dados
+                    data: data1, // definindo os dados do primeiro conjunto
+                    backgroundColor: backgroundColor1, // cor de fundo das barras do primeiro conjunto
+                    borderColor: backgroundColor1, // cor da borda das barras do primeiro conjunto
+                    borderWidth: 1 // largura da borda das barras
                 }, {
-                    label: label2,
-                    data: data2,
-                    fill: false,
-                    borderColor: borderColor2,
-                    tension: 0.1
+                    label: label2, // definindo os rótulos no segundo conjunto de dados
+                    data: data2, // definindo os dados do segundo conjunto
+                    backgroundColor: backgroundColor2, // cor de fundo das barras do segundo conjunto
+                    borderColor: backgroundColor2, // cor da borda das barras do segundo conjunto
+                    borderWidth: 1 //  largura da borda das barras
+                    
                 }]
             },
             options: {
-                responsive: true,
-                maintainAspectRatio: false,
+                responsive: true, // deixando o  grafico responsivo
+                maintainAspectRatio: false, // não mantém a proporção ao redimensionar
                 scales: {
                     x: {
                         ticks: {
-                            color: '#000'
+                            color: '#000', // define a cor dos ticks do eixo X
+                            font: {
+                                family: 'Poppins, sans-serif', // fonte dos ticks
+                                weight: 'bold' // define em negrito
+                            }
                         },
                         grid: {
-                            display: false
+                            display: false // ocultando a grade do eixo X
                         }
                     },
                     y: {
-                        beginAtZero: true,
+                        beginAtZero: true, // definindo em zero o eixo Y 
                         ticks: {
-                            color: '#000'
+                            color: '#000', // Define a cor dos ticks do eixo Y
+                            font: {
+                                family: 'Poppins, sans-serif', // mudando a fonte
+                                weight: 'bold' // deixando negrito
+                            }
                         },
                         grid: {
-                            color: 'rgba(0, 0, 0, 0.1)'
+                            color: 'rgba(0, 0, 0, 0.1)' //  mudando a cor da grade no eixo Y
                         }
                     }
                 },
                 plugins: {
                     legend: {
-                        display: true,
+                        display: true, // exibindo a legenda
                         labels: {
-                            color: '#000'
+                            color: '#000', // definindo a cor da legenda
+                            font: {
+                                family: 'Poppins, sans-serif', // define a fonte
+                                weight: 'bold' // deixando a fonte em negrito
+                            }
                         }
                     },
                     tooltip: {
                         callbacks: {
-                            label: function(context) {
-                                return context.dataset.label + ': ' + context.parsed.y;
+                            label: function (context) {
+                                return context.dataset.label + ': ' + context.parsed.y; 
                             }
                         }
                     }
@@ -257,7 +273,7 @@
             }
         });
 
-        // Assign the new chart instance to the correct variable
+        // linkando o grafico a variável correta
         if (elementId === 'grafico-usuario') {
             chartUsuario = chartInstance;
         } else if (elementId === 'grafico-global') {
