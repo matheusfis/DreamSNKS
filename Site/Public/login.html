@@ -138,8 +138,9 @@
             alert ("Cadastro realizado com sucesso! Redirecionando para tela de Login...")
     
             setTimeout(() => {
-              window.location = "#login";
-            }, "2000");
+            //   window.location = "#login";
+              wrapper.classList.remove('active');
+            }, "1000");
   
             
             
