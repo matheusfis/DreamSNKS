@@ -72,7 +72,7 @@ body {
 }
 
 .list-itens a li:hover {
-    color: #1b3872;
+    color: #a8c5ff;
     scale: 105%;
     transition: all 0.5s;
 }
@@ -506,9 +506,11 @@ button:hover {
 }
 
 .description p {
-    color: #b0b0ba;
+    color: #d4d4ff;
     /* padding-top: 5px; */
     font-size: 14px;
+    font-family: 'Poppins';
+    font-weight: 900;
     margin-bottom: 18px;
 }
 
@@ -579,13 +581,12 @@ input:checked + label .description {
 .footer-content ul.quick-links li a, .footer-content li a {
     color: white;
     text-decoration: none;
-    transition: color 0.3s;
 }
 
 .footer-content li a:hover, .footer-content ul.quick-links li a:hover {
-    color: #3E7CFA;
-    font-size: 17px;
-    transition: all 0.4s;
+    color: #a8c5ff;
+    scale: 110%;
+    transition: all 0.5s;
 }
 
 .footer-content p {
