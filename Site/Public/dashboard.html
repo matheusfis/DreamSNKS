@@ -37,19 +37,19 @@
                 <section class="visao-geral-analitica">
                     <div class="cartao">
                         <h3><i class="fas fa-check check-icon"></i>Sua média de acertos</h3>
-                        <p>70%</p>
+                        <p id="mediaAcertosUsuario">70%</p>
                     </div>
                     <div class="cartao">
                         <h3><i class="fas fa-check check-icon"></i>Média de acertos dos usuários</h3>
-                        <p>80%</p>
+                        <p id="mediaAcertosUsuarios">80%</p>
                     </div>
                     <div class="cartao">
                         <h3><i class="fas fa-percentage"></i>Sua maior pontuação</h3>
-                        <p>4/5 pts</p>
+                        <p id="maxPontuacaoUsuario">4/5 pts</p>
                     </div>
                     <div class="cartao">
                         <h3><i class="fas fa-percentage"></i>Maior pontuação dos usuários</h3>
-                        <p>5/5 pts</p>
+                        <p id="maxPontuacaoUsuarios">5/5 pts</p>
                     </div>
                 </section>
                 <!-- seção pro grafico -->
@@ -86,113 +86,296 @@
 <!-- ------SCRIPT PARA GRAFICOS------ -->
 
 <script>
-    const graficoUser = document.getElementById('grafico-usuario').getContext('2d');
-    const GraficoGlobal = document.getElementById('grafico-global').getContext('2d');
 
-    const chartOptions = {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-            legend: {
-                display: true,
-                position: 'top',
-                labels: {
-                    font: {
-                        size: 14,
-                        weight: 'bold'
-                    },
-                    color: '#000'
-                }
+    // const graficoUser = document.getElementById('grafico-usuario').getContext('2d');
+    // const GraficoGlobal = document.getElementById('grafico-global').getContext('2d');
+
+    // const chartOptions = {
+    //     responsive: true,
+    //     maintainAspectRatio: false,
+    //     plugins: {
+    //         legend: {
+    //             display: true,
+    //             position: 'top',
+    //             labels: {
+    //                 font: {
+    //                     size: 14,
+    //                     weight: 'bold'
+    //                 },
+    //                 color: '#000'
+    //             }
+    //         },
+    //         tooltip: {
+    //             callbacks: {
+    //                 label: function (context) {
+    //                     let label = context.dataset.label || '';
+    //                     if (label) {
+    //                         label += ': ';
+    //                     }
+    //                     label += context.parsed.y;
+    //                     return label;
+    //                 }
+    //             }
+    //         }
+    //     },
+    //     scales: {
+    //         x: {
+    //             ticks: {
+    //                 font: {
+    //                     size: 12,
+    //                     weight: 'bold'
+    //                 },
+    //                 color: '#000'
+    //             },
+    //             grid: {
+    //                 display: false
+    //             }
+    //         },
+    //         y: {
+    //             beginAtZero: true,
+    //             ticks: {
+    //                 font: {
+    //                     size: 12,
+    //                     weight: 'bold'
+    //                 },
+    //                 color: '#000'
+    //             },
+    //             grid: {
+    //                 color: 'rgba(0, 0, 0, 0.1)'
+    //             }
+    //         }
+    //     }
+    // };
+
+    // const dataUser = {
+    //     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+    //     datasets: [{
+    //         label: 'Seus acertos',
+    //         data: [65, 59, 80, 81, 56, 55, 40],
+    //         fill: false,
+    //         borderColor: 'rgba(50, 255, 90, 1)',
+    //         tension: 0.2
+    //     }, {
+    //         label: 'Acertos dos usuarios',
+    //         data: [28, 48, 40, 19, 86, 27, 90],
+    //         fill: false,
+    //         borderColor: 'rgba(10, 50, 255, 1)',
+    //         tension: 0.2
+    //     }]
+    // };
+
+    // const dataGlobal = {
+    //     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+    //     datasets: [{
+    //         label: 'Seus erros',
+    //         data: [65, 59, 80, 81, 56, 55, 40],
+    //         fill: false,
+    //         borderColor: 'rgba( 255, 0, 60, 1)',
+    //         tension: 0.2
+    //     }, {
+    //         label: 'Erros dos usuarios',
+    //         data: [28, 48, 40, 19, 86, 27, 90],
+    //         fill: false,
+    //         borderColor: 'rgba(255, 165, 0, 1)',
+    //         tension: 0.2
+    //     }]
+
+    // };
+
+    // // Grafico da média de acertos do usuário logado
+    // new Chart(graficoUser, {
+    //     type: 'line',
+    //     data: dataUser,
+    //     options: chartOptions
+    // });
+
+    // // Grafico da média de acertos de todos os usuários
+    // new Chart(GraficoGlobal, {
+    //     type: 'line',
+    //     data: dataGlobal,
+    //     options: chartOptions
+    // });
+
+</script>
+
+<script>
+    let chartUsuario;
+    let chartGlobal;
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const fkUsuario = sessionStorage.getItem('ID_USUARIO');
+        
+        if (fkUsuario) {
+            obterMediaAcertosUsuario(fkUsuario);
+            obterMediaAcertosUsuarios(fkUsuario);
+            obterMaxPontuacaoUsuario(fkUsuario);
+            obterMaxPontuacaoUsuarios(fkUsuario);
+            obterDadosGraficos(fkUsuario);
+        }
+    });
+
+    function fetchData(route, body) {
+        return fetch(route, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
             },
-            tooltip: {
-                callbacks: {
-                    label: function (context) {
-                        let label = context.dataset.label || '';
-                        if (label) {
-                            label += ': ';
+            body: JSON.stringify(body),
+        }).then(response => response.json());
+    }
+
+    function obterMediaAcertosUsuario(fkUsuario) {
+        fetchData('/dadosRoute/mediaAcertosUsuario', { idUsuarioServer: fkUsuario })
+            .then(data => {
+                document.getElementById('mediaAcertosUsuario').innerText = data[0].mediaAcertos + '%';
+            }).catch(error => console.error('Erro ao obter média de acertos do usuário:', error));
+    }
+
+    function obterMediaAcertosUsuarios(fkUsuario) {
+        fetchData('/dadosRoute/mediaAcertosUsuarios', { idUsuarioServer: fkUsuario })
+            .then(data => {
+                document.getElementById('mediaAcertosUsuarios').innerText = data[0].mediaAcertosUsuarios + '%';
+            }).catch(error => console.error('Erro ao obter média de acertos dos usuários:', error));
+    }
+
+    function obterMaxPontuacaoUsuario(fkUsuario) {
+        fetchData('/dadosRoute/maxPontuacaoUsuario', { idUsuarioServer: fkUsuario })
+            .then(data => {
+                document.getElementById('maxPontuacaoUsuario').innerText = data[0].maxPontuacao + '/10 pts';
+            }).catch(error => console.error('Erro ao obter maior pontuação do usuário:', error));
+    }
+
+    function obterMaxPontuacaoUsuarios(fkUsuario) {
+        fetchData('/dadosRoute/maxPontuacaoUsuarios', { idUsuarioServer: fkUsuario })
+            .then(data => {
+                document.getElementById('maxPontuacaoUsuarios').innerText = data[0].maxPontuacaoUsuarios + '/10 pts';
+            }).catch(error => console.error('Erro ao obter maior pontuação dos usuários:', error));
+    }
+
+    function obterDadosGraficos(fkUsuario) {
+        const numTentativas = 7; // Número fixo de tentativas a serem exibidas
+
+        fetchData('/dadosRoute/tentativasAcertosErros', { idUsuarioServer: fkUsuario })
+            .then(data => {
+                console.log('Dados brutos:', data); // Log dos dados retornados
+
+                const labels = [];
+                const acertosIndividuais = [];
+                const errosIndividuais = [];
+
+                data.forEach((item, index) => {
+                    labels.push(`Tentativa ${index + 1}`);
+                    acertosIndividuais.push(item.Acertos);
+                    errosIndividuais.push(item.Erros);
+                });
+
+                const lastAcertos = acertosIndividuais[acertosIndividuais.length - 1];
+                const lastErros = errosIndividuais[errosIndividuais.length - 1];
+
+                while (labels.length < numTentativas) {
+                    labels.push('');
+                    acertosIndividuais.push(lastAcertos);
+                    errosIndividuais.push(lastErros);
+                }
+
+                console.log('Labels:', labels);
+                console.log('Acertos Individuais:', acertosIndividuais);
+                console.log('Erros Individuais:', errosIndividuais);
+
+                // Para os dados dos usuários, chamamos outra função
+                fetchData('/dadosRoute/tentativasAcertosErrosUsuarios', { idUsuarioServer: fkUsuario })
+                    .then(dataUsuarios => {
+                        const acertosUsuarios = new Array(numTentativas).fill(lastAcertos);
+                        const errosUsuarios = new Array(numTentativas).fill(lastErros);
+
+                        dataUsuarios.forEach((item, index) => {
+                            if (index < numTentativas) {
+                                acertosUsuarios[index] = item.Acertos;
+                                errosUsuarios[index] = item.Erros;
+                            }
+                        });
+
+                        console.log('Acertos Usuários:', acertosUsuarios);
+                        console.log('Erros Usuários:', errosUsuarios);
+
+                        plotarGrafico('grafico-usuario', labels, acertosIndividuais, acertosUsuarios, 'Seus acertos', 'Acertos dos usuarios', 'rgba(50, 255, 90, 1)', 'rgba(10, 50, 255, 1)', chartUsuario);
+                        plotarGrafico('grafico-global', labels, errosIndividuais, errosUsuarios, 'Seus erros', 'Erros dos usuarios', 'rgba(255, 0, 60, 1)', 'rgba(255, 165, 0, 1)', chartGlobal);
+                    })
+                    .catch(error => console.error('Erro ao obter dados dos gráficos dos usuários:', error));
+            }).catch(error => console.error('Erro ao obter dados dos gráficos:', error));
+    }
+
+    function plotarGrafico(elementId, labels, data1, data2, label1, label2, borderColor1, borderColor2, chartInstance) {
+        const ctx = document.getElementById(elementId).getContext('2d');
+        
+        // Destroy existing chart instance if it exists
+        if (chartInstance) {
+            chartInstance.destroy();
+        }
+
+        chartInstance = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: label1,
+                    data: data1,
+                    fill: false,
+                    borderColor: borderColor1,
+                    tension: 0.1
+                }, {
+                    label: label2,
+                    data: data2,
+                    fill: false,
+                    borderColor: borderColor2,
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        ticks: {
+                            color: '#000'
+                        },
+                        grid: {
+                            display: false
                         }
-                        label += context.parsed.y;
-                        return label;
+                    },
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            color: '#000'
+                        },
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.1)'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        labels: {
+                            color: '#000'
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.dataset.label + ': ' + context.parsed.y;
+                            }
+                        }
                     }
                 }
             }
-        },
-        scales: {
-            x: {
-                ticks: {
-                    font: {
-                        size: 12,
-                        weight: 'bold'
-                    },
-                    color: '#000'
-                },
-                grid: {
-                    display: false
-                }
-            },
-            y: {
-                beginAtZero: true,
-                ticks: {
-                    font: {
-                        size: 12,
-                        weight: 'bold'
-                    },
-                    color: '#000'
-                },
-                grid: {
-                    color: 'rgba(0, 0, 0, 0.1)'
-                }
-            }
+        });
+
+        // Assign the new chart instance to the correct variable
+        if (elementId === 'grafico-usuario') {
+            chartUsuario = chartInstance;
+        } else if (elementId === 'grafico-global') {
+            chartGlobal = chartInstance;
         }
-    };
-
-    const dataUser = {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-        datasets: [{
-            label: 'Seus acertos',
-            data: [65, 59, 80, 81, 56, 55, 40],
-            fill: false,
-            borderColor: 'rgba(50, 255, 90, 1)',
-            tension: 0.2
-        }, {
-            label: 'Acertos dos usuarios',
-            data: [28, 48, 40, 19, 86, 27, 90],
-            fill: false,
-            borderColor: 'rgba(10, 50, 255, 1)',
-            tension: 0.2
-        }]
-    };
-
-    const dataGlobal = {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-        datasets: [{
-            label: 'Seus erros',
-            data: [65, 59, 80, 81, 56, 55, 40],
-            fill: false,
-            borderColor: 'rgba( 255, 0, 60, 1)',
-            tension: 0.2
-        }, {
-            label: 'Erros dos usuarios',
-            data: [28, 48, 40, 19, 86, 27, 90],
-            fill: false,
-            borderColor: 'rgba(255, 165, 0, 1)',
-            tension: 0.2
-        }]
-
-    };
-
-    // Grafico da média de acertos do usuário logado 
-    new Chart(graficoUser, {
-        type: 'line',
-        data: dataUser,
-        options: chartOptions
-    });
-
-    // Grafico da média de acertos de todos os usuários 
-    new Chart(GraficoGlobal, {
-        type: 'line',
-        data: dataGlobal,
-        options: chartOptions
-    });
-
+    }
 </script>
