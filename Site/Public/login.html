@@ -34,7 +34,7 @@
                     <i class="bx bxs-lock-alt"></i>
                 </div>
 
-                <button type="submit" class="btn animation" style="--i:3; --j:24;"  onclick="entrar()">Entrar</button>
+                <button type="submit" class="btn animation" style="--i:3; --j:24;" onclick="entrar()">Entrar</button>
                 <div class="logreg-link animation" style="--i:4; --j:25;">
                     <p>Não possui uma conta? <a href="#" class="register-link">
                             Registre-se
@@ -45,7 +45,8 @@
         </div>
         <div class="info-text login">
             <h2 class="animation" style="--i:0; --j:20;">Seja bem vindo!</h2>
-            <p class="animation" style="--i:1; --j:21;">Entre agora na sua conta e descubra suas estatísticas personalizadas! Veja seu desempenho no quiz e acompanhe seu progresso.</p>
+            <p class="animation" style="--i:1; --j:21;">Entre agora na sua conta e descubra suas estatísticas
+                personalizadas! Veja seu desempenho no quiz e acompanhe seu progresso.</p>
         </div>
 
         <!-- -------------BOX PARA CADASTRO------------- -->
@@ -71,7 +72,8 @@
                 </div>
 
 
-                <button type="submit" class="btn animation" style="--i:21; --j:4;" onclick="cadastrar()">Cadastrar</button>
+                <button type="submit" class="btn animation" style="--i:21; --j:4;"
+                    onclick="cadastrar()">Cadastrar</button>
                 <div class="logreg-link animation" style="--i:22; --j:5;">
                     <p class="">Já possui uma conta? <a href="#" class="login-link">
                             Entrar
@@ -83,7 +85,8 @@
 
         <div class="info-text register">
             <h2 class="animation" style="--i:17; --j:0;">Bem vindo de volta!</h2>
-            <p class="animation" style="--i:18; --j:1;">Junte-se a nós e tenha acesso a um quiz exclusivo! Comece a acompanhar seu acertos em tempo real. É rápido, fácil e gratuito!</p>
+            <p class="animation" style="--i:18; --j:1;">Junte-se a nós e tenha acesso a um quiz exclusivo! Comece a
+                acompanhar seu acertos em tempo real. É rápido, fácil e gratuito!</p>
         </div>
 
     </div>
@@ -96,82 +99,84 @@
 
 
 <script>
-    function cadastrar() {
-      
-  
-      //Recupere o valor da nova input pelo nome do id
-      // Agora vá para o método fetch logo abaixo
-      var nomeVar = ipt_nome.value;
-      var emailVar = ipt_email.value;
-      var senhaVar = ipt_senha.value;
-      if (
-        nomeVar == "" ||
-        emailVar == "" ||
-        senhaVar == "" 
-      ) {
-        // cardErro.style.display = "block";
-        alert
-          ("Mensagem de erro para todos os campos em branco")
-  
-        return false;
-      } 
-      // Enviando o valor da nova input
-      fetch("/usuarios/cadastrar", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          // crie um atributo que recebe o valor recuperado aqui
-          // Agora vá para o arquivo routes/usuario.js
-          nomeServer: nomeVar,
-          emailServer: emailVar,
-          senhaServer: senhaVar,
-        }),
-      })
-        .then(function (resposta) {
-          console.log("resposta: ", resposta);
-  
-          if (resposta.ok) {
-            // cardErro.style.display = "block";
-  
-            alert ("Cadastro realizado com sucesso! Redirecionando para tela de Login...")
-    
-            setTimeout(() => {
-            //   window.location = "#login";
-              wrapper.classList.remove('active');
-            }, "500");
-  
-            
-            
-          } else {
-            throw "Houve um erro ao tentar realizar o cadastro!";
-          }
-        })
-        .catch(function (resposta) {
-          console.log(`#ERRO: ${resposta}`);
-          
-        });
-  
-      return false;
+    const re = /\S+@\S+\.\S+/; // expressão regular que define o padrão de um email válido, 
+    // '/'' é a separação,  'S+' é a procura pelo caracter
+
+    function validarEmail(email) {
+        return re.test(email); //  metodo test da serve para testar/verificar se o email corresponde ao padrão da constante 're'
+        //Ela retorna true se o email for válido e false caso contrário
     }
-  
 
+    function cadastrar() {
+        var nomeVar = ipt_nome.value;
+        var emailVar = ipt_email.value;
+        var senhaVar = ipt_senha.value;
 
+        if (nomeVar.length < 5) {
+            alert("O nome deve ter mais do que 5 caracteres.");
+            return false;
+        }
 
+        // se o email for inválido a função 'validarEmail' retorna false
+        // só que o operador '!' inverte o valor de false para true, fazendo com que o if seja executado
+        if (!validarEmail(emailVar)) {
+            alert("Por favor, insira um email válido.");
+            return false;
+        }
 
+        if (senhaVar.length < 6) {
+            alert("A senha deve ter 6 dígitos ou mais.");
+            return false;
+        }
 
-// ------------------SCRIPT PARA O LOGIN------------------
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeServer: nomeVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar,
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
 
-function entrar() {
+                if (resposta.ok) {
+
+                    alert("Cadastro realizado com sucesso! Redirecionando para tela de Login...")
+
+                    setTimeout(() => {
+                        //   window.location = "#login";
+                        wrapper.classList.remove('active');
+                    }, "500");
+
+                } else {
+                    throw "Houve um erro ao tentar realizar o cadastro!";
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+
+            });
+
+        return false;
+    }
+
+    // ------------------SCRIPT PARA O LOGIN------------------
+
+    function entrar() {
 
         var emailVar = email_log.value;
         var senhaVar = senha_log.value;
 
         if (emailVar == "" || senhaVar == "") {
-            // cardErro.style.display = "block"
             alert("Mensagem de erro para todos os campos em branco");
-            
+
             return false;
         }
 
@@ -202,7 +207,7 @@ function entrar() {
 
                     setTimeout(function () {
                         window.location = "./Quiz.html";
-                    }, 500); // apenas para exibir o loading
+                    }, 500);
 
                 });
 
@@ -219,4 +224,4 @@ function entrar() {
         return false;
     }
 
-  </script>
+</script>
