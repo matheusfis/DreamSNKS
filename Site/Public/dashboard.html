@@ -8,19 +8,22 @@
     <link rel="icon" href="./Assets/Logo nuvem, dream SNKS.png" type="image/png">
     <title>Dashboard Dream</title>
     <link rel="stylesheet" href="./Css/dashboardStyle.css">
-    <script src="./Js/dashboard.js"></script>
+    <script src="./Js/sessionLog.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
 </head>
 
-<body>
+<body onload="validarSessao()">
 
     <main class="main">
         <header class="header">
             <a href="#" class="logo"><img src="./Assets/LOGO branco DREAM SNKS.png" alt=""></a>
 
             <nav class="navbar">
-                <a href="./Quiz.html">Quiz</a>
-                <a href="#" class="active">Dashboard</a>
-                <a href="#">Sair da sua conta</a>
+                <a href="./Quiz.html">Quiz <i class="fas fa-question-circle"></i></a>
+                <a href="#" class="active">Dashboard <i class="fa-solid fa-chart-line"></i></a>
+                <a href="#" onclick="logOut()">Sair da sua conta  <i class='bx bxs-user'></i></a>
 
             </nav>
         </header>
@@ -30,26 +33,26 @@
                 <header class="cabecalho">
                     <h1>Dashboard</h1>
                     <div class="info-usuario">
-                        <h3>Bem vindo, usuario</h3>
+                        <h3>Bem vindo, <span id="nome_usuario"></span></h3>
                     </div>
                 </header>
                 <!-- visão geral-->
                 <section class="visao-geral-analitica">
                     <div class="cartao">
                         <h3><i class="fas fa-check check-icon"></i>Sua média de acertos</h3>
-                        <p id="mediaAcertosUsuario">70%</p>
+                        <p id="mediaAcertosUsuario">%</p>
                     </div>
                     <div class="cartao">
                         <h3><i class="fas fa-check check-icon"></i>Média de acertos dos usuários</h3>
-                        <p id="mediaAcertosUsuarios">80%</p>
+                        <p id="mediaAcertosUsuarios">%</p>
                     </div>
                     <div class="cartao">
                         <h3><i class="fas fa-percentage"></i>Sua maior pontuação</h3>
-                        <p id="maxPontuacaoUsuario">4/5 pts</p>
+                        <p id="maxPontuacaoUsuario">pts</p>
                     </div>
                     <div class="cartao">
                         <h3><i class="fas fa-percentage"></i>Maior pontuação dos usuários</h3>
-                        <p id="maxPontuacaoUsuarios">5/5 pts</p>
+                        <p id="maxPontuacaoUsuarios">pts</p>
                     </div>
                 </section>
                 <!-- seção pro grafico -->
