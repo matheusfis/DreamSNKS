@@ -9,7 +9,7 @@
     <title>Dashboard Dream</title>
     <link rel="stylesheet" href="./Css/dashboardStyle.css">
     <script src="./Js/sessionLog.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 </head>
@@ -21,37 +21,38 @@
             <a href="#" class="logo"><img src="./Assets/LOGO branco DREAM SNKS.png" alt=""></a>
 
             <nav class="navbar">
+                <a class="">Bem vindo, <span id="nome_usuario">Usuario</span></a>
                 <a href="./Quiz.html">Quiz <i class="fas fa-question-circle"></i></a>
                 <a href="#" class="active">Dashboard <i class="fa-solid fa-chart-line"></i></a>
-                <a href="#" onclick="logOut()">Sair da sua conta  <i class='bx bxs-user'></i></a>
+                <a href="#" onclick="logOut()">Sair da sua conta <i class='bx bxs-user'></i></a>
 
             </nav>
         </header>
 
         <div class="container">
             <main class="conteudo-principal">
-                <header class="cabecalho">
+                <!-- <header class="cabecalho">
                     <h1>Dashboard</h1>
                     <div class="info-usuario">
                         <h3>Bem vindo, <span id="nome_usuario"></span></h3>
                     </div>
-                </header>
+                </header> -->
                 <!-- visão geral-->
                 <section class="visao-geral-analitica">
                     <div class="cartao">
-                        <h3><i class="fas fa-check check-icon"></i>Sua média de acertos</h3>
+                        <h3></i>Sua média de acertos</h3>
                         <p id="mediaAcertosUsuario">%</p>
                     </div>
                     <div class="cartao">
-                        <h3><i class="fas fa-check check-icon"></i>Média de acertos dos usuários</h3>
+                        <h3></i>Média de acertos dos usuários</h3>
                         <p id="mediaAcertosUsuarios">%</p>
                     </div>
                     <div class="cartao">
-                        <h3><i class="fas fa-percentage"></i>Sua maior pontuação</h3>
+                        <h3> Sua maior pontuação</h3>
                         <p id="maxPontuacaoUsuario">pts</p>
                     </div>
                     <div class="cartao">
-                        <h3><i class="fas fa-percentage"></i>Maior pontuação dos usuários</h3>
+                        <h3> Maior pontuação dos usuários</h3>
                         <p id="maxPontuacaoUsuarios">pts</p>
                     </div>
                 </section>
@@ -88,8 +89,8 @@
 
 <!-- ------SCRIPT PARA GRAFICOS------ -->
 <script>
-    let chartUsuario; 
-    let chartGlobal;  
+    let chartUsuario;
+    let chartGlobal;
     document.addEventListener('DOMContentLoaded', function () {
         // recebe o ID armazenado no session.STORAGE
         const fkUsuario = sessionStorage.getItem('ID_USUARIO');
@@ -157,7 +158,7 @@
 
         fetchData('/dadosRoute/tentativasAcertosErros', { idUsuarioServer: fkUsuario })
             .then(data => {
-                console.log('Dados brutos:', data); 
+                console.log('Dados brutos:', data);
 
                 const labels = [];
                 const acertosIndividuais = [];
@@ -221,7 +222,7 @@
                     backgroundColor: backgroundColor2, // cor de fundo das barras do segundo conjunto
                     borderColor: backgroundColor2, // cor da borda das barras do segundo conjunto
                     borderWidth: 1 //  largura da borda das barras
-                    
+
                 }]
             },
             options: {
@@ -268,7 +269,7 @@
                     tooltip: {
                         callbacks: {
                             label: function (context) {
-                                return context.dataset.label + ': ' + context.parsed.y; 
+                                return context.dataset.label + ': ' + context.parsed.y;
                             }
                         }
                     }
