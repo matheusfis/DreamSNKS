@@ -13,21 +13,25 @@ CREATE TABLE usuario (
 -- Tabela quiz
 CREATE TABLE quiz (
     idQuiz INT AUTO_INCREMENT PRIMARY KEY,
+    descQuiz VARCHAR(45),
     qtdFeitos INT NOT NULL
 );
 
+INSERT INTO quiz VALUES 
+	(1, 'Quiz da Dream Sneakers', 5);
+    
 -- Tabela resultadoQuiz
 CREATE TABLE resultadoQuiz (
-    fkLogUsuario INT,
+	idResultadoQuiz INT,
+    fkUsuario INT,
     fkQuiz INT,
     qtdAcertos INT NOT NULL,
     qtdErros INT NOT NULL,
-    PRIMARY KEY (fkLogUsuario, fkQuiz),
-    FOREIGN KEY (fkLogUsuario) REFERENCES usuario(idLogUsuario),
+    PRIMARY KEY (fkUsuario, fkQuiz, idResultadoQuiz),
+    FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario),
     FOREIGN KEY (fkQuiz) REFERENCES quiz(idQuiz)
 );
 
-
-SELECT * FROM usuario;
+SELECT * FROM resultadoQuiz;
 
 TRUNCATE usuario;
