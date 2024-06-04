@@ -88,7 +88,7 @@ function mostrarPerguntas(index) {
 
     const opcao = document.querySelectorAll('.opcao');
 
-    // Adiciona evento de clique
+    // adiciona evento de clique em todas as opções
     for (let i = 0; i < opcao.length; i++) {
         opcao[i].setAttribute('onclick', 'opcaoSelecionada(this)');
     }
@@ -96,7 +96,7 @@ function mostrarPerguntas(index) {
 
 function opcaoSelecionada(resposta) {
     let respostaUsuario = resposta.textContent;
-    let respostaCorreta = questions[contadorQuestoes].answer;
+    let respostaCorreta = questions[contadorQuestoes].answer; // pega a resposta correta do JSON
     let todasOpcoes = listaOpcoes.children.length;
 
     if (respostaUsuario == respostaCorreta) {
@@ -107,7 +107,7 @@ function opcaoSelecionada(resposta) {
         questoesErros++;
         resposta.classList.add('incorreta');
 
-        // Marca a resposta correta se a resposta for errada
+        // Marca a resposta correta se a resposta estiver errada
         for (let i = 0; i < todasOpcoes; i++) {
             if (listaOpcoes.children[i].textContent == respostaCorreta) {
                 listaOpcoes.children[i].setAttribute('class', 'opcao correta');
@@ -115,7 +115,7 @@ function opcaoSelecionada(resposta) {
         }
     }
 
-    // Desabilita todas as opções depois da seleção da resposta
+    // Desabilita todas as opções depois da escolha da resposta
     for (let i = 0; i < todasOpcoes; i++) {
         listaOpcoes.children[i].classList.add('desativada');
     }
