@@ -92,7 +92,6 @@
     let chartUsuario;
     let chartGlobal;
     document.addEventListener('DOMContentLoaded', function () {
-        // recebe o ID armazenado no session.STORAGE
         const fkUsuario = sessionStorage.getItem('ID_USUARIO');
 
         // se a FK existir, chama as funções para obter os dados
@@ -105,49 +104,39 @@
         }
     });
 
-    // função para realizar uma requisição POST e retornar os dados em JSON
     function fetchData(route, body) {
         return fetch(route, {
-            method: "POST", // define a requisição como POST
+            method: "POST", 
             headers: {
-                "Content-Type": "application/json", // define a requisição como um JSON
+                "Content-Type": "application/json", 
             },
-            body: JSON.stringify(body), // converte o corpo da requisição para um JSON
-        }).then(response => response.json()); // converte a resposta para um JSON
+            body: JSON.stringify(body), 
+        }).then(response => response.json()); 
     }
 
-    // função para obter a média de acertos do usuário
     function obterMediaAcertosUsuario(fkUsuario) {
         fetchData('/dadosRoute/mediaAcertosUsuario', { idUsuarioServer: fkUsuario })
             .then(data => {
-                // atualiza o HTML e coloca a média de acertos do usuário
                 document.getElementById('mediaAcertosUsuario').innerText = data[0].mediaAcertos + '%';
             }).catch(error => console.error('Erro ao obter média de acertos do usuário:', error));
     }
 
-    // função para obter a média de acertos de todos os usuários
     function obterMediaAcertosUsuarios(fkUsuario) {
         fetchData('/dadosRoute/mediaAcertosUsuarios', { idUsuarioServer: fkUsuario })
             .then(data => {
-                // atualiza o HTML e coloca a média de acertos de todos os usuários
                 document.getElementById('mediaAcertosUsuarios').innerText = data[0].mediaAcertosUsuarios + '%';
             }).catch(error => console.error('Erro ao obter média de acertos dos usuários:', error));
     }
 
-    // função para obter a maior pontuação do usuário
     function obterMaxPontuacaoUsuario(fkUsuario) {
         fetchData('/dadosRoute/maxPontuacaoUsuario', { idUsuarioServer: fkUsuario })
             .then(data => {
-                // atualiza o HTML e coloca a maior pontuação do usuário
                 document.getElementById('maxPontuacaoUsuario').innerText = data[0].maxPontuacao + '/10 pts';
             }).catch(error => console.error('Erro ao obter maior pontuação do usuário:', error));
     }
-
-    // função para obter a maior pontuação de todos os usuários
     function obterMaxPontuacaoUsuarios(fkUsuario) {
         fetchData('/dadosRoute/maxPontuacaoUsuarios', { idUsuarioServer: fkUsuario })
             .then(data => {
-                // atualiza o HTML e coloca a maior pontuação de todos os usuários
                 document.getElementById('maxPontuacaoUsuarios').innerText = data[0].maxPontuacaoUsuarios + '/10 pts';
             }).catch(error => console.error('Erro ao obter maior pontuação dos usuários:', error));
     }
@@ -207,62 +196,62 @@
         }
 
         chartInstance = new Chart(ctx, {
-            type: 'bar', // colocando o tipo de gráfico como de barras
+            type: 'bar', 
             data: {
-                labels: labels, // definindo os rótulos no eixo X
+                labels: labels, 
                 datasets: [{
-                    label: label1, // definindo os rótulos do primeiro conjunto de dados
-                    data: data1, // definindo os dados do primeiro conjunto
-                    backgroundColor: backgroundColor1, // cor de fundo das barras do primeiro conjunto
-                    borderColor: backgroundColor1, // cor da borda das barras do primeiro conjunto
+                    label: label1, 
+                    data: data1, 
+                    backgroundColor: backgroundColor1, 
+                    borderColor: backgroundColor1, 
                     borderWidth: 1 // largura da borda das barras
                 }, {
-                    label: label2, // definindo os rótulos no segundo conjunto de dados
-                    data: data2, // definindo os dados do segundo conjunto
-                    backgroundColor: backgroundColor2, // cor de fundo das barras do segundo conjunto
-                    borderColor: backgroundColor2, // cor da borda das barras do segundo conjunto
-                    borderWidth: 1 //  largura da borda das barras
+                    label: label2, 
+                    data: data2, 
+                    backgroundColor: backgroundColor2, 
+                    borderColor: backgroundColor2, 
+                    borderWidth: 1 
 
                 }]
             },
             options: {
                 responsive: true, // deixando o  grafico responsivo
-                maintainAspectRatio: false, // não mantém a proporção ao redimensionar
+                maintainAspectRatio: false, 
                 scales: {
                     x: {
                         ticks: {
-                            color: '#000', // define a cor dos ticks do eixo X
+                            color: '#000', 
                             font: {
-                                family: 'Poppins, sans-serif', // fonte dos ticks
-                                weight: 'bold' // define em negrito
+                                family: 'Poppins, sans-serif', 
+                                weight: 'bold' 
                             }
                         },
                         grid: {
-                            display: false // ocultando a grade do eixo X
+                            display: false 
                         }
                     },
                     y: {
-                        beginAtZero: true, // definindo em zero o eixo Y 
+                        beginAtZero: true, 
                         ticks: {
-                            color: '#000', // Define a cor dos ticks do eixo Y
+                            color: '#000', 
                             font: {
-                                family: 'Poppins, sans-serif', // mudando a fonte
-                                weight: 'bold' // deixando negrito
+                                family: 'Poppins, sans-serif', 
+                                weight: 'bold' 
                             }
                         },
                         grid: {
-                            color: 'rgba(0, 0, 0, 0.1)' //  mudando a cor da grade no eixo Y
+                            color: 'rgba(0, 0, 0, 0.1)' 
                         }
                     }
                 },
                 plugins: {
                     legend: {
-                        display: true, // exibindo a legenda
+                        display: true, 
                         labels: {
-                            color: '#000', // definindo a cor da legenda
+                            color: '#000', 
                             font: {
-                                family: 'Poppins, sans-serif', // define a fonte
-                                weight: 'bold' // deixando a fonte em negrito
+                                family: 'Poppins, sans-serif', 
+                                weight: 'bold' 
                             }
                         }
                     },
@@ -277,7 +266,6 @@
             }
         });
 
-        // linkando o grafico a variável correta
         if (elementId === 'grafico-usuario') {
             chartUsuario = chartInstance;
         } else if (elementId === 'grafico-global') {

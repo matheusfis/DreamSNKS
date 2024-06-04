@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Bubbles&display=swap');
 
-
 * {
     margin: 0;
     padding: 0;
@@ -15,7 +14,7 @@ body {
     overflow: hidden;
 }
 
-.header {
+.cabecalho {
     position: fixed;
     top: 0;
     left: 0;
@@ -28,7 +27,7 @@ body {
     z-index: 100;
 }
 
-.header a img {
+.cabecalho a img {
     width: 200px;
     height: 100px;
     margin-left: 40px;
@@ -42,7 +41,7 @@ body {
     filter: drop-shadow(0 0 5px #09001d);
 }
 
-.navbar a {
+.barra-navegacao a {
     font-size: 18px;
     color: #fff;
     text-decoration: none;
@@ -51,12 +50,12 @@ body {
     transition: .3s;
 }
 
-.navbar a:hover,
-.navbar a.active {
+.barra-navegacao a:hover,
+.barra-navegacao a.ativo {
     color: #3E7CFA;
 }
 
-.main {
+.principal {
     min-height: 100vh;
     background: url('../Assets/Background\ Tenis\ Jordan.png') no-repeat;
     background-size: cover;
@@ -65,7 +64,7 @@ body {
     transition: .3s ease;
 }
 
-.main.active {
+.principal.ativo {
     filter: blur(15px);
     pointer-events: none;
 }
@@ -76,7 +75,7 @@ body {
     width: 200%;
 }
 
-.home {
+.inicio {
     position: relative;
     left: -50%;
     width: 100%;
@@ -85,28 +84,28 @@ body {
     align-items: center;
 }
 
-.home-content {
+.conteudo-inicio {
     max-width: 600px;
     display: flex;
     align-items: center;
     flex-direction: column;
 }
 
-.home-content h1 {
+.conteudo-inicio h1 {
     font-size: 78px;
     font-weight: 700;
     text-shadow: 0 0 10px rgba(0, 0, 0, .3);
     
 }
 
-.home-content p {
+.conteudo-inicio p {
     font-size: 16px;
     text-align: center;
     text-shadow: 0 0 10px rgba(0, 0, 0, .3);
     margin-bottom: 30px;
 }
 
-.home-content .start-btn {
+.conteudo-inicio .btn-comecar {
     width: 190px;
     height: 55px;
     background: #3E7CFA;
@@ -122,7 +121,7 @@ body {
     transition: .5s;
 }
 
-.home-content .start-btn:hover {
+.conteudo-inicio .btn-comecar:hover {
     background: #09001d;
     box-shadow: none;
 }
@@ -141,7 +140,7 @@ body {
     transition: .3s ease;
 }
 
-.popup-info.active {
+.popup-info.ativo {
     opacity: 1;
     pointer-events: auto;
     transform: translate(-50%, -50%) scale(1);
@@ -160,7 +159,7 @@ body {
     margin: 4px 0;
 }
 
-.popup-info .btn-group {
+.popup-info .grupo-botoes {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -169,7 +168,7 @@ body {
     padding: 15px 0 7px;
 }
 
-.popup-info .btn-group .info-btn {
+.popup-info .grupo-botoes .btn-info {
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -188,22 +187,22 @@ body {
     transition: .5s;
 }
 
-.popup-info .btn-group .info-btn:nth-child(1) {
+.popup-info .grupo-botoes .btn-info:nth-child(1) {
     background: transparent;
     color: #3E7CFA;
 }
 
-.popup-info .btn-group .info-btn:nth-child(1):hover {
+.popup-info .grupo-botoes .btn-info:nth-child(1):hover {
     background: #3E7CFA;
     color: #fff;
 }
 
-.popup-info .btn-group .info-btn:nth-child(2):hover {
+.popup-info .grupo-botoes .btn-info:nth-child(2):hover {
     background: #2c59b4;
     border-color: #2c59b4;
 }
 
-.quiz-section {
+.secao-quiz {
     position: relative;
     left: -50%;
     width: 100%;    
@@ -216,11 +215,11 @@ body {
     transition-delay: .25s;
 }
 
-.quiz-section.active {
+.secao-quiz.ativo {
     left: 0;
 }
 
-.quiz-section .quiz-box {
+.secao-quiz .caixa-quiz {
     position: relative;
     width: 500px;
     background: transparent;
@@ -236,7 +235,7 @@ body {
     transition-delay: 0s;
 }
 
-.quiz-section .quiz-box.active {
+.secao-quiz .caixa-quiz.ativo {
     opacity: 1;
     pointer-events: auto;
     transform: scale(1);
@@ -244,14 +243,14 @@ body {
     transition-delay: 1s;
 }
 
-.quiz-box h1 {
+.caixa-quiz h1 {
     font-size: 32px;
     text-align: center;
     background: linear-gradient(45deg, transparent, #3E7CFA, transparent);
     border-radius: 6px;
 }
 
-.quiz-box .quiz-header {
+.caixa-quiz .cabecalho-quiz {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -260,23 +259,23 @@ body {
     margin-bottom: 30px;
 }
 
-.quiz-header span {
+.cabecalho-quiz span {
     font-size: 18px;
     font-weight: 500;
 }
 
-.quiz-header .header-score {
+.cabecalho-quiz .cabecalho-pontuacao {
     background: #3E7CFA;
     border-radius: 3px;
     padding: 7px;
 }
 
-.quiz-box .question-text {
+.caixa-quiz .texto-pergunta {
     font-size: 24px;
     font-weight: 600;
 }
 
-.option-list .option {
+.lista-opcoes .opcao {
     width: 100%;
     padding: 12px;
     background: transparent;
@@ -288,28 +287,28 @@ body {
     transition: .3s;
 }
 
-.option-list .option:hover {
+.lista-opcoes .opcao:hover {
     background: rgba(255, 255, 255, .1);
     border-color: rgba(255, 255, 255, .1);
 }
 
-.option-list .option.correct {
+.lista-opcoes .opcao.correta {
     background: #09001d;
     color: #00a63d;
     border-color: #00a63d;
 }
 
-.option-list .option.incorrect {
+.lista-opcoes .opcao.incorreta {
     background: #09001d;
     color: #a60045;
     border-color: #a60045;
 }
 
-.option-list .option.disabled {
+.lista-opcoes .opcao.desativada {
     pointer-events: none;
 }
 
-.quiz-box .quiz-footer {
+.caixa-quiz .quiz-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -318,12 +317,12 @@ body {
     margin-top: 25px;
 }
 
-.quiz-footer .question-total {
+.quiz-footer .total-perguntas {
     font-size: 16px;
     font-weight: 600;
 }
 
-.quiz-footer .next-btn {
+.quiz-footer .btn-proxima {
     width: 100px;
     height: 45px;
     background: rgba(255, 255, 255, .1);
@@ -338,19 +337,19 @@ body {
     transition: .5s;
 }
 
-.quiz-footer .next-btn.active {
+.quiz-footer .btn-proxima.ativo {
     pointer-events: auto;
     background: #3E7CFA;
     border-color: #3E7CFA;
     color: #fff;
 }
 
-.quiz-footer .next-btn.active:hover {
+.quiz-footer .btn-proxima.ativo:hover {
     background: #2c59b4;
     border-color: #2c59b4;
 }
 
-.quiz-section .result-box {
+.secao-quiz .caixa-resultado {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -368,17 +367,17 @@ body {
     transition: .3s ease;
 }
 
-.quiz-section .result-box.active {
+.secao-quiz .caixa-resultado.ativo {
     opacity: 1;
     pointer-events: auto;
     transform: translate(-50%, -50%) scale(1);
 }
 
-.result-box h2 {
+.caixa-resultado h2 {
     font-size: 42px;
 }
 
-.result-box .percentage-container {
+.caixa-resultado .container-porcentagem {
     width: 300px;
     display: flex;
     flex-direction: column;
@@ -386,7 +385,7 @@ body {
     margin: 20px 0 40px;
 }
 
-.percentage-container .circular-progress {
+.container-porcentagem .progresso-circular {
     position: relative;
     width: 250px;
     height: 250px;
@@ -397,7 +396,7 @@ body {
     align-items: center;
 }
 
-.percentage-container .circular-progress::before {
+.container-porcentagem .progresso-circular::before {
     content: '';
     position: absolute;
     width: 210px;
@@ -406,23 +405,23 @@ body {
     border-radius: 50%;
 }
 
-.circular-progress .progress-value {
+.progresso-circular .valor-progresso {
     position: relative;
     font-size: 45px;
     font-weight: 600;
 }
 
-.percentage-container .score-text {
+.container-porcentagem .texto-pontuacao {
     font-size: 26px;
     font-weight: 600;
     margin-top: 20px;
 }
 
-.result-box .buttons {
+.caixa-resultado .botoes {
     display: flex;
 }
 
-.buttons button {
+.botoes button {
     width: 200px;
     height: 47px;
     background: #3E7CFA;
@@ -437,20 +436,18 @@ body {
     transition: .5s;
 }
 
-.buttons button:nth-child(1):hover {
+.botoes button:nth-child(1):hover {
     background: transparent;
     border-color: #2c59b4;
     color: #3E7CFA;
 }
 
-.buttons button:nth-child(2) {
+.botoes button:nth-child(2) {
     background: transparent;
     color: #3E7CFA;
 }
 
-.buttons button:nth-child(2):hover {
+.botoes button:nth-child(2):hover {
     background: #3E7CFA;
     color: #fff;
 }
-
-

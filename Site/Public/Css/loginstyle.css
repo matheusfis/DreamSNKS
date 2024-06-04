@@ -14,7 +14,6 @@ body {
     height: 100vh;
     width: 100%;
     background-image: url(../Assets/Background\ Tenis\ Jordan.png);
-    /* background-color: #091928 ; */
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -29,7 +28,7 @@ body {
     overflow: hidden;
 }
 
-.wrapper .form-box {
+.wrapper .caixa-formulario {
     position: absolute;
     top: 0;
     width: 50%;
@@ -39,14 +38,14 @@ body {
     justify-content: center;
 }
 
-.wrapper .form-box.login {
+.wrapper .caixa-formulario.login {
     left: 0;
     padding: 0 60px 0 40px;
 }
 
 /* -----------ANIMAÇÃO INPUTS, QUANDO APERTAR NO "REGISTRE-SE--------- */
 
-.wrapper .form-box.login .animation {
+.wrapper .caixa-formulario.login .animate {
     transform: translateX(0);
     opacity: 1;
     filter: blur(0);
@@ -54,33 +53,32 @@ body {
     transition-delay: calc(.1s * var(--j));
 }
 
-.wrapper.active .form-box.login .animation {
+.wrapper.active .caixa-formulario.login .animate {
     transform: translateX(-120%);
     opacity: 0;
     filter: blur(10px);
     transition-delay: calc(.1s * var(--i));
 }
 
-.wrapper .form-box.register  {
+.wrapper .caixa-formulario.register {
     right: 0;
     padding: 0 40px 0 60px;
     pointer-events: none;
 }
 
-.wrapper.active .form-box.register  {
+.wrapper.active .caixa-formulario.register {
     pointer-events: auto;
 }
 
-.wrapper .form-box.register .animation {
+.wrapper .caixa-formulario.register .animate {
     transform: translateX(120%);
     opacity: 0;
     filter: blur(10px);
     transition: .7s ease;
     transition-delay: calc(.1s * var(--j));
-
 }
 
-.wrapper.active .form-box.register .animation {
+.wrapper.active .caixa-formulario.register .animate {
     transform: translateX(0);
     opacity: 1;
     filter: blur(0);
@@ -89,21 +87,20 @@ body {
 
 /* -----------TERMINO ANIMAÇÃO----------- */
 
-.form-box h2 {
+.caixa-formulario h2 {
     font-style: 32px;
     color: #fff;
     text-align: center;
 }
 
-.form-box .input-box {
+.caixa-formulario .caixa-input {
     position: relative;
     width: 100%;
     height: 50px;
-    /* background: seagreen; */
     margin: 25px 0;
 }
 
-.input-box input {
+.caixa-input input {
     width: 100%;
     height: 100%;
     background: transparent;
@@ -117,12 +114,12 @@ body {
     transition: .5s;
 }
 
-.input-box input:focus,
-.input-box input:valid {
-    border-bottom-color: #3E7CFA ;
+.caixa-input input:focus,
+.caixa-input input:valid {
+    border-bottom-color: #3E7CFA;
 }
 
-.input-box label {
+.caixa-input label {
     position: absolute;
     top: 50%;
     left: 0;
@@ -132,13 +129,13 @@ body {
     pointer-events: none;
 }
 
-.input-box input:focus~label,
-.input-box input:valid~label {
+.caixa-input input:focus~label,
+.caixa-input input:valid~label {
     top: -5px;
     color: #3E7CFA;
 }
 
-.input-box i {
+.caixa-input i {
     position: absolute;
     top: 50%;
     right: 0;
@@ -147,8 +144,8 @@ body {
     color: #fff;
 }
 
-.input-box input:focus~i,
-.input-box input:valid~i {
+.caixa-input input:focus~i,
+.caixa-input input:valid~i {
     color: #3E7CFA;
 }
 
@@ -182,9 +179,9 @@ body {
 
 .btn:hover::before {
     top: 0;
-} 
+}
 
-.form-box .logreg-link {
+.caixa-formulario .link-logreg {
     font-size: 14.5px;
     color: #fff;
     text-align: center;
@@ -192,17 +189,17 @@ body {
     word-wrap: normal;
 }
 
-.logreg-link p a {
+.link-logreg p a {
     color: #3E7CFA;
     text-decoration: none;
     font-weight: 600;
 }
 
-.logreg-link p a:hover {
+.link-logreg p a:hover {
     text-decoration: underline;
 }
 
-.wrapper .info-text {
+.wrapper .texto-info {
     position: absolute;
     top: 0%;
     width: 50%;
@@ -212,7 +209,7 @@ body {
     justify-content: center;
 }
 
-.wrapper .info-text.login {
+.wrapper .texto-info.login {
     right: 0;
     text-align: right;
     padding: 0 40px 60px 150px;
@@ -220,7 +217,7 @@ body {
 
 /* -----------ANIMAÇÃO TEXTO, DE APERTAR NO REGISTRE-SE--------- */
 
-.wrapper .info-text.login .animation {
+.wrapper .texto-info.login .animate {
     transform: translateX(0);
     opacity: 1;
     filter: blur(0);
@@ -228,27 +225,25 @@ body {
     transition-delay: calc(.1s * var(--j));
 }
 
-.wrapper.active .info-text.login .animation {
+.wrapper.active .texto-info.login .animate {
     transform: translateX(120%);
     opacity: 0;
     filter: blur(10px);
     transition-delay: calc(.1s * var(--i));
 }
 
-
-.wrapper .info-text.register {
+.wrapper .texto-info.register {
     left: 0;
     text-align: left;
     padding: 0 150px 60px 40px;
     pointer-events: none;
 }
 
-.wrapper.active .info-text.register {
+.wrapper.active .texto-info.register {
     pointer-events: auto;
-
 }
 
-.wrapper .info-text.register .animation {
+.wrapper .texto-info.register .animate {
     transform: translateX(-120%);
     opacity: 0;
     filter: blur(10px);
@@ -256,7 +251,7 @@ body {
     transition-delay: calc(.1s * var(--j));
 }
 
-.wrapper.active .info-text.register .animation {
+.wrapper.active .texto-info.register .animate {
     transform: translateX(0);
     opacity: 1;
     filter: blur(0);
@@ -265,17 +260,16 @@ body {
 
 /* -----------TERMINO----------- */
 
-.info-text h2 {
+.texto-info h2 {
     font-size: 36px;
     color: #fff;
     line-height: 1.3;
     text-transform: uppercase;
 }
 
-.info-text p {
+.texto-info p {
     font-size: 15px;
     color: #fff;
-    /* text-align: right; */
 }
 
 .wrapper .bg-animate {
@@ -285,7 +279,6 @@ body {
     width: 850px;
     height: 600px;
     background: linear-gradient(20deg, #3E7CFA, #152E45);
-    /* background-image: url(../Assets/AJ1\ spider\ man2.JPEG); */
     background-size: contain;
     border-bottom: 3px solid #3E7CFA;
     transform: rotate(10deg) skewY(40deg);
@@ -297,7 +290,6 @@ body {
 .wrapper.active .bg-animate {
     transform: rotate(0) skewY(0);
     transition-delay: .5s;
-
 }
 
 .wrapper .bg-animate2 {

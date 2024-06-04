@@ -1,187 +1,166 @@
-// Seleciona elementos HTML, CSS
-const startBtn = document.querySelector('.start-btn');
+
+const btnComecar = document.querySelector('.btn-comecar');
 const popupInfo = document.querySelector('.popup-info');
-const exitBtn = document.querySelector('.exit-btn');
-const main = document.querySelector('.main');
-const continueBtn = document.querySelector('.continue-btn');
-const quizSection = document.querySelector('.quiz-section');
-const quizBox = document.querySelector('.quiz-box');
-const resultBox = document.querySelector('.result-box');
-const tryAgainBtn = document.querySelector('.tryAgain-btn');
-const goHomeBtn = document.querySelector('.goHome-btn');
+const btnSairQuiz = document.querySelector('.btn-sair-quiz');
+const principal = document.querySelector('.principal');
+const btnContinuar = document.querySelector('.btn-continuar');
+const secaoQuiz = document.querySelector('.secao-quiz');
+const caixaQuiz = document.querySelector('.caixa-quiz');
+const caixaResultado = document.querySelector('.caixa-resultado');
+const btnTentarNovamente = document.querySelector('.btn-tentar-novamente');
+const btnVoltarInicio = document.querySelector('.btn-voltar-inicio');
 const ID_USUARIO = Number(sessionStorage.getItem("ID_USUARIO"));
 
+console.log(`ID-USUARIO: ${ID_USUARIO}`);
 
-console.log(`ID-USUARIO: ${ID_USUARIO}`)
-// Inicia o quiz
-startBtn.onclick = () => {
-    popupInfo.classList.add('active');
-    main.classList.add('active');
+btnComecar.onclick = () => {
+    popupInfo.classList.add('ativo');
+    principal.classList.add('ativo');
 }
 
-// Sai do popup
-exitBtn.onclick = () => {
-    popupInfo.classList.remove('active');
-    main.classList.remove('active');
+btnSairQuiz.onclick = () => {
+    popupInfo.classList.remove('ativo');
+    principal.classList.remove('ativo');
 }
 
-// Continua para o quiz
-continueBtn.onclick = () => {
-    quizSection.classList.add('active');
-    popupInfo.classList.remove('active');
-    main.classList.remove('active');
-    quizBox.classList.add('active');
+btnContinuar.onclick = () => {
+    secaoQuiz.classList.add('ativo');
+    popupInfo.classList.remove('ativo');
+    principal.classList.remove('ativo');
+    caixaQuiz.classList.add('ativo');
 
-    showQuestions(0); // Mostra a primeira pergunta
-    questionCounter(1); // Atualiza o contador de perguntas
-    headerScore(); // Atualiza a pontuação no cabeçalho
+    mostrarPerguntas(0);
+    contadorPerguntas(1); 
+    pontuacaoCabecalho(); 
 }
 
 // Tenta novamente o quiz
-tryAgainBtn.onclick = () => {
-    // quizBox.classList.add('active');
-    // nextBtn.classList.remove('active');
-    // resultBox.classList.remove('active');
-
-    // questionCount = 0;
-    // questionNumb = 1;
-    // userScore = 0;
-    // showQuestions(questionCount);
-    // questionCounter(questionNumb);
-    // headerScore();
-
+btnTentarNovamente.onclick = () => {
     window.location.href = './dashboard.html';
 }
 
 // Volta para a tela inicial
-goHomeBtn.onclick = () => {
-    quizSection.classList.remove('active');
-    nextBtn.classList.remove('active');
-    resultBox.classList.remove('active');
+btnVoltarInicio.onclick = () => {
+    secaoQuiz.classList.remove('ativo');
+    btnProxima.classList.remove('ativo');
+    caixaResultado.classList.remove('ativo');
 
-    questionCount = 0;
-    questionNumb = 1;
-    userScore = 0;
-    showQuestions(questionCount);
-    questionCounter(questionNumb);
+    contadorQuestoes = 0;
+    numeroPergunta = 1;
+    pontuacaoUsuario = 0;
+    mostrarPerguntas(contadorQuestoes);
+    contadorPerguntas(numeroPergunta);
 }
-
-// variavel de controle
-let questionCount = 0;
-let questionNumb = 1;
-let userScore = 0;
+let contadorQuestoes = 0;
+let numeroPergunta = 1;
+let pontuacaoUsuario = 0;
 
 let idQuiz = 1;
 let questoesErros = 0;
 
-const nextBtn = document.querySelector('.next-btn');
+const btnProxima = document.querySelector('.btn-proxima');
 
-// Avança para a proxima pergunta
-nextBtn.onclick = () => {
-    if (questionCount < questions.length - 1) {
-        questionCount++;
-        showQuestions(questionCount);
-        questionNumb++;
-        questionCounter(questionNumb);
-        nextBtn.classList.remove('active');
+btnProxima.onclick = () => {
+    if (contadorQuestoes < questions.length - 1) {
+        contadorQuestoes++;
+        mostrarPerguntas(contadorQuestoes);
+        numeroPergunta++;
+        contadorPerguntas(numeroPergunta);
+        btnProxima.classList.remove('ativo');
     } else {
-        showResultBox();
+        mostrarCaixaResultado();
     }
 }
 
-const optionList = document.querySelector('.option-list');
+const listaOpcoes = document.querySelector('.lista-opcoes');
 
 // Mostra perguntas e opções
-function showQuestions(index) {
-    const questionText = document.querySelector('.question-text');
-    questionText.textContent = `${questions[index].numb}. ${questions[index].question}`;
+function mostrarPerguntas(index) {
+    const textoPergunta = document.querySelector('.texto-pergunta');
+    textoPergunta.textContent = `${questions[index].numb}. ${questions[index].question}`;
 
-    let optionTag = `<div class="option"><span>${questions[index].options[0]}</span></div>
-        <div class="option"><span>${questions[index].options[1]}</span></div>
-        <div class="option"><span>${questions[index].options[2]}</span></div>
-        <div class="option"><span>${questions[index].options[3]}</span></div>`;
+    let tagOpcoes = `<div class="opcao"><span>${questions[index].options[0]}</span></div>
+        <div class="opcao"><span>${questions[index].options[1]}</span></div>
+        <div class="opcao"><span>${questions[index].options[2]}</span></div>
+        <div class="opcao"><span>${questions[index].options[3]}</span></div>`;
 
-    optionList.innerHTML = optionTag;
+    listaOpcoes.innerHTML = tagOpcoes;
 
-    const option = document.querySelectorAll('.option');
+    const opcao = document.querySelectorAll('.opcao');
+
     // Adiciona evento de clique
-    for (let i = 0; i < option.length; i++) {
-        option[i].setAttribute('onclick', 'optionSelected(this)');
+    for (let i = 0; i < opcao.length; i++) {
+        opcao[i].setAttribute('onclick', 'opcaoSelecionada(this)');
     }
 }
 
-// Verifica a resposta selecionada
-function optionSelected(answer) {
-    let userAnswer = answer.textContent;
-    let correctAnswer = questions[questionCount].answer;
-    let allOptions = optionList.children.length;
+function opcaoSelecionada(resposta) {
+    let respostaUsuario = resposta.textContent;
+    let respostaCorreta = questions[contadorQuestoes].answer;
+    let todasOpcoes = listaOpcoes.children.length;
 
-    if (userAnswer == correctAnswer) {
-        answer.classList.add('correct');
-        userScore++;
-        headerScore();
+    if (respostaUsuario == respostaCorreta) {
+        resposta.classList.add('correta');
+        pontuacaoUsuario++;
+        pontuacaoCabecalho();
     } else {
         questoesErros++;
-        answer.classList.add('incorrect');
+        resposta.classList.add('incorreta');
+
         // Marca a resposta correta se a resposta for errada
-        for (let i = 0; i < allOptions; i++) {
-            if (optionList.children[i].textContent == correctAnswer) {
-                optionList.children[i].setAttribute('class', 'option correct');
+        for (let i = 0; i < todasOpcoes; i++) {
+            if (listaOpcoes.children[i].textContent == respostaCorreta) {
+                listaOpcoes.children[i].setAttribute('class', 'opcao correta');
             }
         }
     }
 
     // Desabilita todas as opções depois da seleção da resposta
-    for (let i = 0; i < allOptions; i++) {
-        optionList.children[i].classList.add('disabled');
+    for (let i = 0; i < todasOpcoes; i++) {
+        listaOpcoes.children[i].classList.add('desativada');
     }
 
-    nextBtn.classList.add('active');
+    btnProxima.classList.add('ativo');
 }
 
-// Atualiza o contador  perguntas
-function questionCounter(index) {
-    const questionTotal = document.querySelector('.question-total');
-    questionTotal.textContent = `${index} de ${questions.length} Questões`;
+function contadorPerguntas(index) {
+    const totalPerguntas = document.querySelector('.total-perguntas');
+    totalPerguntas.textContent = `${index} de ${questions.length} Questões`;
 }
 
-// Atualiza a pontuação 
-function headerScore() {
-    const headerScoreText = document.querySelector('.header-score');
-    headerScoreText.textContent = `Pontuação: ${userScore} / ${questions.length}`;
+function pontuacaoCabecalho() {
+    const textoPontuacaoCabecalho = document.querySelector('.cabecalho-pontuacao');
+    textoPontuacaoCabecalho.textContent = `Pontuação: ${pontuacaoUsuario} / ${questions.length}`;
 }
 
-// Mostra a caixa de resultados
-function showResultBox() {
+function mostrarCaixaResultado() {
+    caixaQuiz.classList.remove('ativo'); // Fecha a caixa da seção do quiz
+    caixaResultado.classList.add('ativo'); // Adiciona a box do resultado
 
-    quizBox.classList.remove('active'); // Fecha a caixa da seção do quiz
-    resultBox.classList.add('active'); // Adiciona a box do resultado
+    const textoPontuacao = document.querySelector('.texto-pontuacao');
+    textoPontuacao.textContent = `Seus acertos: ${pontuacaoUsuario} de ${questions.length}`;
 
-    const scoreText = document.querySelector('.score-text');
-    scoreText.textContent = `Seus acertos: ${userScore} de ${questions.length}`;
+    const progressoCircular = document.querySelector('.progresso-circular');
+    const valorProgresso = document.querySelector('.valor-progresso');
+    let valorInicialProgresso = -1;
+    let valorFinalProgresso = (pontuacaoUsuario / questions.length) * 100; // Calculo matemático referente a porcentagem de acertos
+    let velocidade = 20;
 
-    const circularProgress = document.querySelector('.circular-progress');
-    const progressValue = document.querySelector('.progress-value');
-    let progressStartValue = -1;
-    let progressEndValue = (userScore / questions.length) * 100; // Calculo matematico referente a porcentagem de acertos
-    let speed = 20;
+    // Atualiza o progresso do gráfico até chegar no último valor
+    let progresso = setInterval(() => {
+        valorInicialProgresso++;
+        valorProgresso.textContent = `${valorInicialProgresso}%`;
+        progressoCircular.style.background = `conic-gradient(#3E7CFA ${valorInicialProgresso * 3.6}deg, rgba(255, 255, 255, .1) 0deg)`;
 
-    // Atualiza o progresso do grafico até chegar no ultimo valor 
-    let progress = setInterval(() => {
-        progressStartValue++;
-        progressValue.textContent = `${progressStartValue}%`;
-        circularProgress.style.background = `conic-gradient(#3E7CFA ${progressStartValue * 3.6}deg, rgba(255, 255, 255, .1) 0deg)`;
-
-        if (progressStartValue == progressEndValue) {
-            clearInterval(progress);
+        if (valorInicialProgresso == valorFinalProgresso) {
+            clearInterval(progresso);
         }
-    }, speed);
+    }, velocidade);
     fetchQuiz()
-
 }
 
 function fetchQuiz() {
-    qtdAcertos = userScore;
+    qtdAcertos = pontuacaoUsuario;
     // Fetch para enviar os arquivos para o banco
     fetch(`quizRoute/registrar/${ID_USUARIO}`, {
         method: "POST",

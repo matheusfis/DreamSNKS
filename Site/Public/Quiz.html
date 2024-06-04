@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -11,79 +11,79 @@
     <script src="./Js/sessionLog.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
 </head>
 
 <body>
 
-    <main class="main">
-        <header class="header">
+    <main class="principal">
+        <header class="cabecalho">
             <a href="#" class="logo"><img src="./Assets/Logo dream SNKS.png" alt=""></a>
 
-            <nav class="navbar">
-                <a href="#" class="active">Quiz <i class="fas fa-question-circle"></i></a>
+            <nav class="barra-navegacao">
+                <a href="#" class="ativo">Quiz <i class="fas fa-question-circle"></i></a>
                 <a href="dashboard.html">Dashboard <i class="fa-solid fa-chart-line"></i></a>
-                <a href="#" onclick="logOut()">Sair da sua conta  <i class='bx bxs-user'></i></a>
-
+                <a href="#" onclick="deslogar()">Sair da sua conta  <i class='bx bxs-user'></i></a>
             </nav>
         </header>
 
         <div class="container">
-            <section class="quiz-section">
-                <div class="quiz-box">
+            <section class="secao-quiz">
+                <div class="caixa-quiz">
                     <h1>Dream SNKRS</h1>
-                    <div class="quiz-header">
+                    <div class="cabecalho-quiz">
                         <span>Quiz de sneakers</span>
-                        <span class="header-score">Pontuação: 0 / 5</span>
+                        <span class="cabecalho-pontuacao">Pontuação: 0 / 5</span>
                     </div>
 
-                    <h2 class="question-text">Dream SNKRS</h2>
+                    <h2 class="texto-pergunta">Dream SNKRS</h2>
 
-                    <div class="option-list">
-                        <!-- <div class="option">
+                    <div class="lista-opcoes">
+                        <!--
+                        <div class="opcao">
                             <span>A. Hyper Type Multi Language</span>
                         </div>
-                        <div class="option">
+                        <div class="opcao">
                             <span>B. Hyper Text Multiple Language</span>
                         </div>
-                        <div class="option">
+                        <div class="opcao">
                             <span>C. Hyper Text Markup Language</span>
                         </div>
-                        <div class="option">
+                        <div class="opcao">
                             <span>D. Home Text Multi Language</span>
-                        </div> -->
+                        </div>
+                        -->
                     </div>
 
                     <div class="quiz-footer">
-                        <span class="question-total">1 de 5 Questões</span>
-                        <button class="next-btn">Next</button>
+                        <span class="total-perguntas">1 de 5 Questões</span>
+                        <button class="btn-proxima">Next</button>
                     </div>
                 </div>
 
-                <div class="result-box">
+                <div class="caixa-resultado">
                     <h2>Resultado do Quiz!</h2>
-                    <div class="percentage-container">
-                        <div class="circular-progress">
-                            <span class="progress-value">0%</span>
+                    <div class="container-porcentagem">
+                        <div class="progresso-circular">
+                            <span class="valor-progresso">0%</span>
                         </div>
 
-                        <span class="score-text">Sua Pontuação: 1 de 5</span>
+                        <span class="texto-pontuacao">Sua Pontuação: 1 de 5</span>
                     </div>
 
-                    <div class="buttons">
-                        <button class="tryAgain-btn">Ir para a Dashboard</button>
-                        <button class="goHome-btn">Voltar para a tela inicial</button>
+                    <div class="botoes">
+                        <button class="btn-tentar-novamente">Ir para a Dashboard</button>
+                        <button class="btn-voltar-inicio">Voltar para a tela inicial</button>
                     </div>
                 </div>
             </section>
 
-            <section class="home">
-                <div class="home-content">
+            <section class="inicio">
+                <div class="conteudo-inicio">
                     <h1>Quiz Website</h1>
                     <p>Bem-vindo ao nosso quiz exclusivo para apaixonados por sneakers. Clique no botão abaixo para
                         começar e descubra o quanto você realmente sabe sobre o universo dos tênis mais icônicos.
                     </p>
-                    <button class="start-btn">Começar Quiz</button>
+                    <button class="btn-comecar">Começar Quiz</button>
                 </div>
             </section>
         </div>
@@ -97,14 +97,11 @@
             pergunta.</span>
         <span class="info">3. Após finalizar o quiz você poderá ver a sua porcentagem de acertos.</span>
 
-        <div class="btn-group">
-            <button class="info-btn exit-btn">Sair do Quiz</button>
-            <a href="#" class="info-btn continue-btn">Continuar</a>
+        <div class="grupo-botoes">
+            <button class="btn-info btn-sair-quiz">Sair do Quiz</button>
+            <a href="#" class="btn-info btn-continuar">Continuar</a>
         </div>
     </div>
-
-    
-
 
     <script src="./Js/quizScript.js"></script>
     <script src="./Js/questions.js"></script>
